@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "tokens:check": "node ./scripts/check-token-hardcodes.mjs"
+    "tokens:check": "node ./scripts/check-token-hardcodes.mjs",
+    "tailwind:check": "node ./scripts/check-tailwind-contract.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.8.0"
   }
 }
