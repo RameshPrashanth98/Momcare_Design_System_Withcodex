@@ -1,5 +1,9 @@
 export * from "./types.js";
 export * from "./metadata.js";
+export { primitives } from "./primitives.js";
+export { semanticTokens } from "./semantic.js";
+export { componentAliases } from "./component-aliases.js";
+export { typographyTokens } from "./typography.js";
 
 export const tokenLayers = {
   primitive: "primitive",

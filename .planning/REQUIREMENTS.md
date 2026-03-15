@@ -7,10 +7,10 @@
 
 ### Foundations
 
-- [ ] **FND-01**: Team can consume a canonical color token set extracted from the source HTML, including brand, semantic, text, background, and border roles.
-- [ ] **FND-02**: Team can consume typography tokens for display, body, and mono families, including font sizes, line heights, tracking, and weights derived from the source HTML.
-- [ ] **FND-03**: Team can consume spacing, radius, border-width, shadow, and layout tokens derived from the source HTML without copying raw CSS values into components.
-- [ ] **FND-04**: Team can reference token documentation that records source intent, naming conventions, and any flagged items requiring later brand-guideline verification.
+- [x] **FND-01**: Team can consume a canonical color token set extracted from the source HTML, including brand, semantic, text, background, and border roles.
+- [x] **FND-02**: Team can consume typography tokens for display, body, and mono families, including font sizes, line heights, tracking, and weights derived from the source HTML.
+- [x] **FND-03**: Team can consume spacing, radius, border-width, shadow, and layout tokens derived from the source HTML without copying raw CSS values into components.
+- [x] **FND-04**: Team can reference token documentation that records source intent, naming conventions, and any flagged items requiring later brand-guideline verification.
 
 ### Tailwind Theming
 
@@ -63,10 +63,10 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FND-01 | Phase 1 | Pending |
-| FND-02 | Phase 1 | Pending |
-| FND-03 | Phase 1 | Pending |
-| FND-04 | Phase 1 | Pending |
+| FND-01 | Phase 1 | Complete |
+| FND-02 | Phase 1 | Complete |
+| FND-03 | Phase 1 | Complete |
+| FND-04 | Phase 1 | Complete |
 | THM-01 | Phase 2 | Pending |
 | THM-02 | Phase 2 | Pending |
 | THM-03 | Phase 2 | Pending |
@@ -90,4 +90,5 @@
 
 ---
 *Requirements defined: 2026-03-16*
-*Last updated: 2026-03-16 after initial definition*
+*Last updated: 2026-03-16 after Phase 1 completion*
+
