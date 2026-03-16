@@ -13,7 +13,12 @@ const preview: Preview = {
       storySort: {
         order: [
           "Design System",
-          ["Foundations", "Styles"],
+          [
+            "Foundations",
+            ["Overview", "Design Tokens"],
+            "Styles",
+            ["Color", "Typography", "Spacing", "Elevation", "Grid", "Iconography", "Border", "Radius"]
+          ],
           "Navigation"
         ]
       }
