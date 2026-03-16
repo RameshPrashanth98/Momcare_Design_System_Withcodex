@@ -9,6 +9,15 @@ import { typographyTokens } from "../src/tokens/typography.js";
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          "Design System",
+          ["Foundations", "Styles"],
+          "Navigation"
+        ]
+      }
+    },
     layout: "fullscreen",
     controls: {
       expanded: true,
