@@ -81,9 +81,11 @@ Run `$gsd-plan-phase 3` to create the Core Primitives and Guardrails plan, or `$
 | 260316-fc2 | order Storybook styles sidebar entries | 2026-03-16 | 49d709c | [260316-fc2-in-story-book-i-want-to-change-order-in-](./quick/260316-fc2-in-story-book-i-want-to-change-order-in-/) |
 | 260316-g1c | initialize git and connect repository to GitHub remote | 2026-03-16 | local-config | [260316-g1c-initialize-git-connect-to-my-github-repo](./quick/260316-g1c-initialize-git-connect-to-my-github-repo/) |
 | 260316-gvt | add detailed GitHub root readme | 2026-03-16 | 9a246f3 | [260316-gvt-add-readme-file-in-github-about-detailed](./quick/260316-gvt-add-readme-file-in-github-about-detailed/) |
+| 260316-hbx | add onboarding Storybook components | 2026-03-16 | bbdb36d | [260316-hbx-we-are-building-the-mom-care-app-fronten](./quick/260316-hbx-we-are-building-the-mom-care-app-fronten/) |
 
 ---
-*Last updated: 2026-03-16 after quick task 260316-gvt*
+*Last updated: 2026-03-16 after quick task 260316-hbx*
+
 
 
 
