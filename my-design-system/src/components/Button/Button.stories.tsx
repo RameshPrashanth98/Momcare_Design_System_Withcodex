@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+﻿import type { Meta, StoryObj } from "@storybook/react";
 
 import { fontFamilyPrimitives, fontSizePrimitives, lineHeightPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
 import { Button } from "./Button.js";
@@ -22,18 +22,21 @@ function StoryIcon({ symbol }: { symbol: string }) {
 }
 
 const meta = {
-  title: "Onboarding/Button",
+  title: "Authentication/Button",
   component: Button,
   args: {
-    children: "Get Started",
+    children: "Login",
     disabled: false,
+    fullWidth: false,
     loading: false,
     size: "comfortable",
+    type: "button",
     variant: "filled"
   },
   argTypes: {
     children: { control: "text" },
     disabled: { control: "boolean" },
+    fullWidth: { control: "boolean" },
     leadingIcon: { control: false },
     loading: { control: "boolean" },
     onClick: { action: "clicked" },
@@ -42,6 +45,10 @@ const meta = {
       options: ["compact", "comfortable", "spacious"]
     },
     trailingIcon: { control: false },
+    type: {
+      control: "inline-radio",
+      options: ["button", "submit", "reset"]
+    },
     variant: {
       control: "inline-radio",
       options: ["filled", "text"]
@@ -55,11 +62,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Filled: Story = {};
+export const FilledButton: Story = {};
 
-export const Text: Story = {
+export const TextButton: Story = {
   args: {
-    children: "Back",
+    children: "Forgot Password",
     variant: "text"
   }
 };
@@ -67,26 +74,41 @@ export const Text: Story = {
 export const DisabledStates: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
-      <Button {...args} disabled variant="filled">Get Started</Button>
-      <Button {...args} disabled variant="text">Back</Button>
-      <Button {...args} loading variant="filled">Get Started</Button>
+      <Button {...args} disabled variant="filled">Login</Button>
+      <Button {...args} disabled variant="text">Forgot Password</Button>
+      <Button {...args} loading variant="filled">Login</Button>
     </div>
   )
 };
 
 export const WithLeadingIcon: Story = {
   args: {
-    leadingIcon: <StoryIcon symbol="+" />,
+    children: "Login",
+    leadingIcon: <StoryIcon symbol=">" />,
     variant: "filled"
   }
 };
 
 export const WithTrailingIcon: Story = {
   args: {
-    children: "Next",
-    trailingIcon: <StoryIcon symbol="?" />,
+    children: "Contact Administrator",
+    trailingIcon: <StoryIcon symbol="+" />,
     variant: "text"
   }
+};
+
+export const FullWidthLoginButton: Story = {
+  args: {
+    children: "Login",
+    fullWidth: true,
+    type: "submit",
+    variant: "filled"
+  },
+  render: (args) => (
+    <div style={{ width: `calc(${spacingPrimitives.space32.value} + ${spacingPrimitives.space24.value})` }}>
+      <Button {...args} />
+    </div>
+  )
 };
 
 export const AllSizes: Story = {
@@ -106,15 +128,13 @@ export const AllSizes: Story = {
   )
 };
 
-export const OnboardingNavigationExamples: Story = {
+export const AuthExamples: Story = {
   render: (args) => (
-    <div style={{ display: "grid", gap: spacingPrimitives.space4.value }}>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
-        <Button {...args} variant="filled">Get Started</Button>
-      </div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
-        <Button {...args} variant="text">Back</Button>
-        <Button {...args} trailingIcon={<StoryIcon symbol="?" />} variant="text">Next</Button>
+    <div style={{ display: "grid", gap: spacingPrimitives.space4.value, width: `calc(${spacingPrimitives.space32.value} + ${spacingPrimitives.space24.value})` }}>
+      <Button {...args} fullWidth type="submit" variant="filled">Login</Button>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space3.value, justifyContent: "space-between" }}>
+        <Button {...args} variant="text">Forgot Password</Button>
+        <Button {...args} trailingIcon={<StoryIcon symbol="+" />} variant="text">Contact Administrator</Button>
       </div>
     </div>
   )

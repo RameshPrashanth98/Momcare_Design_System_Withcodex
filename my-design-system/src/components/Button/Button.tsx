@@ -1,7 +1,7 @@
-import { useState, type ButtonHTMLAttributes, type CSSProperties, type ReactNode } from "react";
+ï»¿import { useState, type ButtonHTMLAttributes, type CSSProperties, type ReactNode } from "react";
 
 import { componentAliases } from "../../tokens/component-aliases.js";
-import { borderWidthPrimitives, colorPrimitives, fontSizePrimitives, radiusPrimitives, shadowPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
+import { borderWidthPrimitives, colorPrimitives, fontSizePrimitives, shadowPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
 import { semanticTokens } from "../../tokens/semantic.js";
 import { typographyTokens } from "../../tokens/typography.js";
 
@@ -12,6 +12,7 @@ export type ButtonProps = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
+  fullWidth?: boolean;
   leadingIcon?: ReactNode;
   loading?: boolean;
   onClick?: ButtonHTMLAttributes<HTMLButtonElement>["onClick"];
@@ -28,6 +29,7 @@ const sizeTokens = {
     iconSize: fontSizePrimitives.textSm.value,
     minHeight: spacingPrimitives.space10.value,
     minWidth: spacingPrimitives.space10.value,
+    paddingBlock: spacingPrimitives.space2.value,
     paddingInline: spacingPrimitives.space4.value,
     textStyle: typographyTokens.caption
   },
@@ -36,6 +38,7 @@ const sizeTokens = {
     iconSize: fontSizePrimitives.textBase.value,
     minHeight: spacingPrimitives.space12.value,
     minWidth: spacingPrimitives.space12.value,
+    paddingBlock: spacingPrimitives.space3.value,
     paddingInline: spacingPrimitives.space5.value,
     textStyle: typographyTokens.labelSm
   },
@@ -44,6 +47,7 @@ const sizeTokens = {
     iconSize: fontSizePrimitives.textLg.value,
     minHeight: spacingPrimitives.space16.value,
     minWidth: spacingPrimitives.space16.value,
+    paddingBlock: spacingPrimitives.space4.value,
     paddingInline: spacingPrimitives.space6.value,
     textStyle: typographyTokens.bodyMd
   }
@@ -53,27 +57,27 @@ const variantTokens = {
   filled: {
     activeBackground: colorPrimitives.roseDark.value,
     activeShadow: shadowPrimitives.shadowXs.value,
+    borderColor: colorPrimitives.roseDark.value,
     defaultBackground: componentAliases.button.primaryBg.value,
     defaultColor: componentAliases.button.text.value,
     disabledBackground: semanticTokens.surface.muted.value,
+    disabledBorderColor: semanticTokens.border.subtle.value,
     disabledColor: semanticTokens.text.muted.value,
     hoverBackground: componentAliases.button.primaryHover.value,
     hoverShadow: shadowPrimitives.shadowMd.value,
-    pressedBackground: colorPrimitives.roseDark.value,
-    pressedShadow: shadowPrimitives.shadowXs.value,
     shadow: shadowPrimitives.shadowSm.value
   },
   text: {
-    activeBackground: colorPrimitives.creamSoft.value,
+    activeBackground: colorPrimitives.roseMist.value,
     activeShadow: "none",
+    borderColor: "transparent",
     defaultBackground: "transparent",
     defaultColor: semanticTokens.interactive.primaryHover.value,
     disabledBackground: "transparent",
+    disabledBorderColor: "transparent",
     disabledColor: semanticTokens.text.muted.value,
     hoverBackground: semanticTokens.surface.subtle.value,
     hoverShadow: "none",
-    pressedBackground: colorPrimitives.roseMist.value,
-    pressedShadow: "none",
     shadow: "none"
   }
 } as const;
@@ -94,9 +98,18 @@ export function Button({
   children,
   className,
   disabled = false,
+  fullWidth = false,
   leadingIcon,
   loading = false,
+  onBlur,
   onClick,
+  onFocus,
+  onKeyDown,
+  onKeyUp,
+  onMouseDown,
+  onMouseEnter,
+  onMouseLeave,
+  onMouseUp,
   size = "comfortable",
   trailingIcon,
   type = "button",
@@ -105,8 +118,8 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
+  const [isFocusVisible, setIsFocusVisible] = useState(false);
   const isDisabled = disabled || loading;
   const isIconOnly = !children;
   const activeSize = sizeTokens[size];
@@ -115,7 +128,7 @@ export function Button({
   const backgroundColor = isDisabled
     ? activeVariant.disabledBackground
     : isPressed
-      ? activeVariant.pressedBackground
+      ? activeVariant.activeBackground
       : isHovered
         ? activeVariant.hoverBackground
         : activeVariant.defaultBackground;
@@ -124,7 +137,7 @@ export function Button({
   const boxShadow = isDisabled
     ? "none"
     : isPressed
-      ? activeVariant.pressedShadow
+      ? activeVariant.activeShadow
       : isHovered
         ? activeVariant.hoverShadow
         : activeVariant.shadow;
@@ -133,8 +146,10 @@ export function Button({
     alignItems: "center",
     appearance: "none",
     backgroundColor,
-    border: "none",
+    borderColor: isDisabled ? activeVariant.disabledBorderColor : activeVariant.borderColor,
     borderRadius: componentAliases.button.radius.value,
+    borderStyle: "solid",
+    borderWidth: variant === "filled" ? borderWidthPrimitives.border1.value : borderWidthPrimitives.border0.value,
     boxShadow,
     color,
     cursor: isDisabled ? "not-allowed" : "pointer",
@@ -149,17 +164,20 @@ export function Button({
     minHeight: activeSize.minHeight,
     minWidth: isIconOnly ? activeSize.minWidth : `calc(${activeSize.minHeight} + ${activeSize.paddingInline})`,
     opacity: isDisabled ? 0.72 : 1,
-    outlineColor: isFocused ? componentAliases.focusRing.color.value : "transparent",
+    outlineColor: isFocusVisible ? componentAliases.focusRing.color.value : "transparent",
     outlineOffset: componentAliases.focusRing.offset.value,
     outlineStyle: "solid",
-    outlineWidth: isFocused ? componentAliases.focusRing.width.value : borderWidthPrimitives.border0.value,
-    paddingBlock: spacingPrimitives.space3.value,
-    paddingInline: isIconOnly ? spacingPrimitives.space3.value : activeSize.paddingInline,
+    outlineWidth: isFocusVisible ? componentAliases.focusRing.width.value : borderWidthPrimitives.border0.value,
+    paddingBlock: activeSize.paddingBlock,
+    paddingInline: isIconOnly ? activeSize.paddingBlock : activeSize.paddingInline,
     textDecoration: "none",
-    userSelect: "none"
+    transitionDuration: spacingPrimitives.space1.value,
+    transitionProperty: "background-color, box-shadow, color, outline-color",
+    userSelect: "none",
+    width: fullWidth ? "100%" : undefined
   };
 
-  const label = loading ? "Loading…" : children;
+  const label = loading ? "Loading..." : children;
 
   return (
     <button
@@ -168,22 +186,42 @@ export function Button({
       aria-label={ariaLabel}
       className={className}
       disabled={isDisabled}
-      onBlur={() => setIsFocused(false)}
+      onBlur={(event) => {
+        setIsFocusVisible(false);
+        onBlur?.(event);
+      }}
       onClick={onClick}
-      onFocus={() => setIsFocused(true)}
+      onFocus={(event) => {
+        setIsFocusVisible(true);
+        onFocus?.(event);
+      }}
       onKeyDown={(event) => {
         if (event.key === " " || event.key === "Enter") {
           setIsPressed(true);
         }
+        onKeyDown?.(event);
       }}
-      onKeyUp={() => setIsPressed(false)}
-      onMouseDown={() => setIsPressed(true)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
+      onKeyUp={(event) => {
+        setIsPressed(false);
+        onKeyUp?.(event);
+      }}
+      onMouseDown={(event) => {
+        setIsPressed(true);
+        onMouseDown?.(event);
+      }}
+      onMouseEnter={(event) => {
+        setIsHovered(true);
+        onMouseEnter?.(event);
+      }}
+      onMouseLeave={(event) => {
         setIsHovered(false);
         setIsPressed(false);
+        onMouseLeave?.(event);
       }}
-      onMouseUp={() => setIsPressed(false)}
+      onMouseUp={(event) => {
+        setIsPressed(false);
+        onMouseUp?.(event);
+      }}
       style={buttonStyle}
       type={type}
       {...rest}
