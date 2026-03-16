@@ -1,21 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { OverviewPage } from "./foundations-docs.js";
+import { RadiusPage } from "./foundations-docs.js";
 
 const meta = {
-  title: "Design System/Foundations/Overview",
-  component: OverviewPage,
+  title: "Design System/Styles/Radius",
+  component: RadiusPage,
   parameters: {
     controls: {
       disable: true
     }
   },
   tags: ["autodocs"]
-} satisfies Meta<typeof OverviewPage>;
+} satisfies Meta<typeof RadiusPage>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Overview: Story = {};
-
+export const Reference: Story = {};

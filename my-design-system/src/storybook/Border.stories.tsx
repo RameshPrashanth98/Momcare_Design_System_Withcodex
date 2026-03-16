@@ -1,21 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { OverviewPage } from "./foundations-docs.js";
+import { BorderPage } from "./foundations-docs.js";
 
 const meta = {
-  title: "Design System/Foundations/Overview",
-  component: OverviewPage,
+  title: "Design System/Styles/Border",
+  component: BorderPage,
   parameters: {
     controls: {
       disable: true
     }
   },
   tags: ["autodocs"]
-} satisfies Meta<typeof OverviewPage>;
+} satisfies Meta<typeof BorderPage>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Overview: Story = {};
-
+export const Reference: Story = {};
