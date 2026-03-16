@@ -1,6 +1,6 @@
-# My Design System
+# Mom Care
 
-This workspace contains the Morph Maternity design-system foundations.
+This workspace contains the Mom Care design-system foundations derived from the Morph Maternity source document.
 
 ## Token Architecture
 
