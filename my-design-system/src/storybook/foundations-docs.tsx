@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+﻿import type { ReactNode } from "react";
 
 import { sourceSections } from "../tokens/metadata.js";
 import {
@@ -17,6 +17,7 @@ import {
 import { semanticTokens } from "../tokens/semantic.js";
 import type { TokenSourceRef, TypographyStyleToken } from "../tokens/types.js";
 import { typographyTokens } from "../tokens/typography.js";
+import { MomCareBrandMark } from "./momcare-brand.js";
 
 type TokenRow = {
   token: string;
@@ -174,7 +175,7 @@ const brandPalette = [
 
 const colorGroups: Array<{ title: string; swatches: Swatch[] }> = [
   {
-    title: "Rose · Primary",
+    title: "Rose Â· Primary",
     swatches: [
       { name: "Rose Mist", value: colorPrimitives.roseMist.value, role: "rose-mist" },
       { name: "Rose Petal", value: colorPrimitives.rosePetal.value, role: "rose-petal" },
@@ -184,7 +185,7 @@ const colorGroups: Array<{ title: string; swatches: Swatch[] }> = [
     ]
   },
   {
-    title: "Cream · Secondary",
+    title: "Cream Â· Secondary",
     swatches: [
       { name: "Cream Warm", value: colorPrimitives.creamWarm.value, role: "bg-subtle" },
       { name: "Cream Soft", value: colorPrimitives.creamSoft.value, role: "cream-soft" },
@@ -192,7 +193,7 @@ const colorGroups: Array<{ title: string; swatches: Swatch[] }> = [
     ]
   },
   {
-    title: "Sage · Accent",
+    title: "Sage Â· Accent",
     swatches: [
       { name: "Sage Light", value: colorPrimitives.sageLight.value, role: "sage-light" },
       { name: "Sage Mid", value: colorPrimitives.sageMid.value, role: "accent" },
@@ -299,18 +300,18 @@ const iconSizeRows: UsageRow[] = [
 ];
 
 const iconExamples = [
-  ["🛍", "Bag"],
-  ["♡", "Wishlist"],
-  ["◌", "Account"],
-  ["⌕", "Search"],
-  ["▦", "Orders"],
-  ["🚚", "Delivery"],
-  ["↩", "Returns"],
-  ["✿", "Sustainable"],
-  ["⭑", "Rating"],
-  ["◎", "Size Guide"],
-  ["🔒", "Secure"],
-  ["⊕", "Add"]
+  ["ðŸ›", "Bag"],
+  ["â™¡", "Wishlist"],
+  ["â—Œ", "Account"],
+  ["âŒ•", "Search"],
+  ["â–¦", "Orders"],
+  ["ðŸšš", "Delivery"],
+  ["â†©", "Returns"],
+  ["âœ¿", "Sustainable"],
+  ["â­‘", "Rating"],
+  ["â—Ž", "Size Guide"],
+  ["ðŸ”’", "Secure"],
+  ["âŠ•", "Add"]
 ] as const;
 
 const borderRows: UsageRow[] = [
@@ -441,14 +442,14 @@ function SwatchGrid({ swatches }: { swatches: Swatch[] }) {
 export function OverviewPage() {
   return (
     <Shell>
-      <SectionHeader eyebrow="Foundations" title="Morph Maternity Design System" description="This Storybook foundations area mirrors the reference HTML by organizing the system into a high-level overview, a design token inventory, and dedicated style guidance pages." />
+      <SectionHeader eyebrow="Foundations" title="MomCare Design System" description="This Storybook foundations area presents the MomCare Design System through a high-level overview, a design token inventory, and dedicated style guidance pages aligned to the current brand direction." />
       <Card>
         <div className="grid gap-8 rounded-[20px] bg-[linear-gradient(135deg,#FAE8EC_0%,#F9EDE8_100%)] p-8 md:grid-cols-[minmax(0,1fr)_220px] md:items-center">
           <div>
-            <div className="type-eyebrow text-brand-roseDeep">Design System</div>
+            <div className="type-eyebrow text-brand-roseDeep">MomCare Design System</div>
             <h2 className="mt-3 font-display text-[3.5rem] font-light leading-tight tracking-tight text-text-primary">Foundations</h2>
             <p className="mt-4 max-w-2xl type-bodyLg text-text-secondary">
-              The core visual language of Morph Maternity: tokens, styles, and patterns that define every touchpoint of the brand experience.
+              The core visual language of MomCare: tokens, styles, and reusable patterns that define every Storybook surface and app touchpoint.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center gap-5 rounded-[22px] bg-white/60 p-8">
@@ -462,7 +463,7 @@ export function OverviewPage() {
         </div>
       </Card>
       <Note>
-        Derived from the supplied Morph Maternity HTML foundations document. Display and body font selections are still marked provisional until the official brand guideline is confirmed.
+        Derived from the supplied MomCare visual direction and the existing token foundations in this repository. Display and body font selections should still be validated against the final brand guideline if it changes.
       </Note>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
         <Card>
@@ -513,7 +514,7 @@ export function DesignTokensPage() {
             <div key={row.token} className="rounded-2xl border border-border-subtle bg-surface-subtle p-4">
               <code className="rounded bg-brand-roseMist px-2 py-1 font-mono text-[12px] text-brand-roseDeep">{row.token}</code>
               <div className="mt-3 type-bodyMd text-text-secondary">
-                {row.source ? `${row.source.sourceToken} · ${sourceSections[row.source.sourceSection]}` : "Reference guidance"}
+                {row.source ? `${row.source.sourceToken} Â· ${sourceSections[row.source.sourceSection]}` : "Reference guidance"}
               </div>
               {row.source?.provisional ? <div className="mt-2 type-caption text-text-secondary">{row.source.notes ?? "Verify against official brand guidelines."}</div> : null}
             </div>
@@ -657,7 +658,7 @@ export function GridPage() {
         <Card key={spec.name}>
           <h2 className="type-labelSm text-text-primary">{spec.name} grid</h2>
           <p className="mt-2 type-bodyMd text-text-secondary">
-            {spec.columns} columns · Gutter {spec.gutter} · Margin {spec.margin} · Breakpoint {spec.breakpoint}
+            {spec.columns} columns Â· Gutter {spec.gutter} Â· Margin {spec.margin} Â· Breakpoint {spec.breakpoint}
           </p>
           <div className="mt-5 grid gap-2" style={{ gridTemplateColumns: `repeat(${spec.columns}, minmax(0, 1fr))` }}>
             {Array.from({ length: spec.columns }, (_, index) => (
@@ -766,3 +767,4 @@ export function RadiusPage() {
     </Shell>
   );
 }
+

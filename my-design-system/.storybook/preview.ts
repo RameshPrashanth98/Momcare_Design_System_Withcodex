@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import type { Preview } from "@storybook/react";
 
 import "../src/storybook/tailwind.css";
@@ -12,7 +12,7 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
-          "Design System",
+          "MomCare Design System",
           [
             "Foundations",
             ["Overview", "Design Tokens"],
@@ -62,4 +62,5 @@ const preview: Preview = {
 };
 
 export default preview;
+
 

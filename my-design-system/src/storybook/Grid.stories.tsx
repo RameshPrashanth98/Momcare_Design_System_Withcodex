@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+﻿import type { Meta, StoryObj } from "@storybook/react";
 
 import { GridPage } from "./foundations-docs.js";
 
 const meta = {
-  title: "Design System/Styles/Grid",
+  title: "MomCare Design System/Styles/Grid",
   component: GridPage,
   parameters: {
     controls: {
@@ -18,3 +18,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Reference: Story = {};
+

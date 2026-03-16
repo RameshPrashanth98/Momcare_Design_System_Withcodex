@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+﻿import type { Meta, StoryObj } from "@storybook/react";
 
 import { ColorPage } from "./foundations-docs.js";
 
 const meta = {
-  title: "Design System/Styles/Color",
+  title: "MomCare Design System/Styles/Color",
   component: ColorPage,
   parameters: {
     controls: {
@@ -18,3 +18,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Reference: Story = {};
+
