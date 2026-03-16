@@ -10,7 +10,7 @@
 | # | Phase | Goal | Requirements | Success Criteria |
 |---|-------|------|--------------|------------------|
 | 1 | Source Audit and Token Architecture | Complete on 2026-03-16. Convert the HTML foundations into a canonical token model with documented source fidelity and known caveats. | FND-01, FND-02, FND-03, FND-04 | 4 |
-| 2 | Tailwind Theme Foundation | Make the token system consumable through Tailwind-aligned theming and layout utilities. | THM-01, THM-02, THM-03 | 3 |
+| 2 | Tailwind Theme Foundation | Complete on 2026-03-16. Make the token system consumable through Tailwind-aligned theming and layout utilities. | THM-01, THM-02, THM-03 | 3 |
 | 3 | Core Primitives and Guardrails | Build typed primitives and token-usage safeguards that establish the system's implementation contract. | CMP-01, CMP-04, QLT-01 | 3 |
 | 4 | Interactive and Composite Components | Deliver accessible interactive controls and branded composite patterns on top of primitives. | CMP-02, CMP-03, A11Y-02 | 3 |
 | 5 | Storybook Foundations and Variant Docs | Document all tokens, components, states, and usage guidance in Storybook. | DOC-01, DOC-02, DOC-03 | 3 |
@@ -104,6 +104,7 @@ A11Y-01, A11Y-03, QLT-02
 - Storybook is treated as a delivery artifact, not an afterthought.
 
 ---
-*Last updated: 2026-03-16 after Phase 1 completion*
+*Last updated: 2026-03-16 after Phase 2 completion*
+
 
 

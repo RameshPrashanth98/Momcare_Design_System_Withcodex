@@ -41,9 +41,9 @@ created: 2026-03-16
 | 02-01-01 | 01 | 1 | THM-01 | static | `npm run typecheck` | W0 pending | pending |
 | 02-01-02 | 01 | 1 | THM-01 | static | `npm run tailwind:check` | W0 pending | pending |
 | 02-01-03 | 01 | 1 | THM-03 | static | `npm run tailwind:check` | W0 pending | pending |
-| 02-02-01 | 02 | 2 | THM-02 | static | `npm run tailwind:check` | W0 pending | pending |
-| 02-02-02 | 02 | 2 | THM-03 | static | `npm run typecheck` | W0 pending | pending |
-| 02-02-03 | 02 | 2 | THM-01, THM-02, THM-03 | static | `npm run typecheck && npm run tokens:check && npm run tailwind:check` | W0 pending | pending |
+| 02-02-01 | 02 | 2 | THM-02 | static | `npm run tailwind:check` | yes | green |
+| 02-02-02 | 02 | 2 | THM-03 | static | `npm run typecheck` | yes | green |
+| 02-02-03 | 02 | 2 | THM-01, THM-02, THM-03 | static | `npm run typecheck && npm run tokens:check && npm run tailwind:check` | yes | green |
 
 *Status: pending / green / red / flaky*
 
@@ -77,4 +77,5 @@ created: 2026-03-16
 - [x] Feedback latency < 15s
 - [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** approved 2026-03-16 after full verification trio passed
+

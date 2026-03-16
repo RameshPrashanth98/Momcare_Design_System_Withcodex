@@ -21,3 +21,28 @@ The token model uses three token layers:
 Semantic utilities are the default authoring surface for Tailwind consumption in this workspace. Primitive mappings remain available for audits and edge cases, but they are intentionally secondary to semantic roles and shared aliases.
 
 The Tailwind contract exposes a typed theme bridge, named editorial utilities, and shared state/layout helpers derived from the token source of truth.
+
+### Editorial Utilities
+
+- `displayHero`
+- `displaySection`
+- `bodyLg`
+- `bodyMd`
+- `labelSm`
+- `eyebrow`
+- `caption`
+
+### Layout Helpers
+
+- container
+- grid
+- gutters
+- margins
+
+### Shared Alias Utilities
+
+- button
+- input
+- card
+- badge
+- focus ring

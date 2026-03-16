@@ -14,9 +14,9 @@
 
 ### Tailwind Theming
 
-- [ ] **THM-01**: Developers can use the Morph Maternity tokens through Tailwind theme configuration or equivalent token utilities instead of hard-coded visual values.
-- [ ] **THM-02**: Developers can apply responsive grid, container, and spacing rules from the source system through reusable Tailwind-aligned primitives.
-- [ ] **THM-03**: Developers can use semantic utility mappings for interactive, surface, border, and text states that stay aligned with the token system.
+- [x] **THM-01**: Developers can use the Morph Maternity tokens through Tailwind theme configuration or equivalent token utilities instead of hard-coded visual values.
+- [x] **THM-02**: Developers can apply responsive grid, container, and spacing rules from the source system through reusable Tailwind-aligned primitives.
+- [x] **THM-03**: Developers can use semantic utility mappings for interactive, surface, border, and text states that stay aligned with the token system.
 
 ### Components
 
@@ -67,9 +67,9 @@
 | FND-02 | Phase 1 | Complete |
 | FND-03 | Phase 1 | Complete |
 | FND-04 | Phase 1 | Complete |
-| THM-01 | Phase 2 | Pending |
-| THM-02 | Phase 2 | Pending |
-| THM-03 | Phase 2 | Pending |
+| THM-01 | Phase 2 | Complete |
+| THM-02 | Phase 2 | Complete |
+| THM-03 | Phase 2 | Complete |
 | CMP-01 | Phase 3 | Pending |
 | CMP-02 | Phase 4 | Pending |
 | CMP-03 | Phase 4 | Pending |
@@ -90,5 +90,6 @@
 
 ---
 *Requirements defined: 2026-03-16*
-*Last updated: 2026-03-16 after Phase 1 completion*
+*Last updated: 2026-03-16 after Phase 2 completion*
+
 

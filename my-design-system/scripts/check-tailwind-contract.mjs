@@ -4,16 +4,24 @@ import { resolve } from "node:path";
 const root = resolve(process.cwd());
 const fileRules = {
   "tailwind.config.ts": {
-    required: ["morphTailwindTheme", "theme", "extend", "content"],
+    required: ["morphTailwindTheme", "morphTailwindPlugin", "theme", "extend", "content", "plugins"],
     forbidden: ["TODO_TAILWIND", "REPLACE_TAILWIND", "wire later"]
   },
   "src/tokens/tailwind-theme.ts": {
     required: ["morphTailwindTheme", "surface", "text", "border", "interactive", "feedback", "brand"],
     forbidden: ["TODO_TAILWIND", "REPLACE_TAILWIND", "wire later"]
   },
+  "src/tokens/tailwind-plugin.ts": {
+    required: ["morphTailwindPlugin", "displayHero", "displaySection", "bodyLg", "bodyMd", "labelSm", "eyebrow", "caption", "button", "input", "card", "badge", "focusRing", "gridGutterLg", "gridMarginLg"],
+    forbidden: ["TODO_PLUGIN", "REPLACE_PLUGIN", "add classes later"]
+  },
   "src/tokens/index.ts": {
-    required: ["morphTailwindTheme"],
+    required: ["morphTailwindTheme", "morphTailwindPlugin"],
     forbidden: ["TODO_TAILWIND", "REPLACE_TAILWIND", "wire later"]
+  },
+  "README.md": {
+    required: ["displayHero", "displaySection", "bodyLg", "bodyMd", "labelSm", "eyebrow", "caption", "button", "input", "card", "badge", "focus ring"],
+    forbidden: ["TODO_PLUGIN", "REPLACE_PLUGIN", "add classes later"]
   }
 };
 
