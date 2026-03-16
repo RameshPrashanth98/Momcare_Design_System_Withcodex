@@ -13,4 +13,5 @@ Updated Storybook branding to use the MomCare Design System name and a MomCare l
 - `npm run build-storybook`
 
 ## Commit
-- Pending
+- `ab20079` - `feat(storybook): brand docs as momcare design system`
+
