@@ -77,8 +77,10 @@ Run `$gsd-plan-phase 3` to create the Core Primitives and Guardrails plan, or `$
 | 260316-c5k | add Bottomnavbar component adapted from Material 3 for Mom Care | 2026-03-16 | 6b69fa3 | [260316-c5k-add-bottomnavbar-component-adapted-from-](./quick/260316-c5k-add-bottomnavbar-component-adapted-from-/) |
 | 260316-cri | set up Storybook 8 for Mom Care with Tailwind and token foundations | 2026-03-16 | 41ed82d | [260316-cri-set-up-storybook-8-for-mom-care-with-tai](./quick/260316-cri-set-up-storybook-8-for-mom-care-with-tai/) |
 | 260316-ejs | add Storybook design system foundations and styles docs from Morph Maternity HTML | 2026-03-16 | 1adada6 | [260316-ejs-file-d-1-product-20development-20with-20](./quick/260316-ejs-file-d-1-product-20development-20with-20/) |
+| 260316-f4z | order Storybook sidebar with Design System before Navigation | 2026-03-16 | 09fef16 | [260316-f4z-in-story-book-i-want-content-in-this-ord](./quick/260316-f4z-in-story-book-i-want-content-in-this-ord/) |
 
 ---
-*Last updated: 2026-03-16 after quick task 260316-ejs*
+*Last updated: 2026-03-16 after quick task 260316-f4z*
+
 
 
