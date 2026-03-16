@@ -79,9 +79,11 @@ Run `$gsd-plan-phase 3` to create the Core Primitives and Guardrails plan, or `$
 | 260316-ejs | add Storybook design system foundations and styles docs from Morph Maternity HTML | 2026-03-16 | 1adada6 | [260316-ejs-file-d-1-product-20development-20with-20](./quick/260316-ejs-file-d-1-product-20development-20with-20/) |
 | 260316-f4z | order Storybook sidebar with Design System before Navigation | 2026-03-16 | 09fef16 | [260316-f4z-in-story-book-i-want-content-in-this-ord](./quick/260316-f4z-in-story-book-i-want-content-in-this-ord/) |
 | 260316-fc2 | order Storybook styles sidebar entries | 2026-03-16 | 49d709c | [260316-fc2-in-story-book-i-want-to-change-order-in-](./quick/260316-fc2-in-story-book-i-want-to-change-order-in-/) |
+| 260316-g1c | initialize git and connect repository to GitHub remote | 2026-03-16 | local-config | [260316-g1c-initialize-git-connect-to-my-github-repo](./quick/260316-g1c-initialize-git-connect-to-my-github-repo/) |
 
 ---
-*Last updated: 2026-03-16 after quick task 260316-fc2*
+*Last updated: 2026-03-16 after quick task 260316-g1c*
+
 
 
 
