@@ -3,18 +3,19 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SearchBar } from "./SearchBar.js";
 
 const meta = {
-  title: "Mothers/SearchBar",
+  title: "Core/SearchBar",
   component: SearchBar,
   args: {
-    "aria-label": "Search mothers",
-    disabled: false,
-    placeholder: "Search by name or NIC"
+    placeholder: "Search by name, NIC, or clinic number",
+    value: ""
   },
   argTypes: {
-    "aria-label": { control: "text" },
     disabled: { control: "boolean" },
+    leadingIcon: { control: false },
     onChange: { action: "changed" },
+    onSearch: { action: "searched" },
     placeholder: { control: "text" },
+    trailingIcon: { control: false },
     value: { control: "text" }
   },
   tags: ["autodocs"]
@@ -25,4 +26,3 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-export const WithValue: Story = { args: { value: "Ayesha" } };

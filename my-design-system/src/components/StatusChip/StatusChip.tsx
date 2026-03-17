@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { borderWidthPrimitives, colorPrimitives, radiusPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
 import { semanticTokens } from "../../tokens/semantic.js";
@@ -10,6 +10,7 @@ export type StatusChipStatus = StatusChipTone;
 export type StatusChipProps = {
   className?: string;
   label: string;
+  leadingIcon?: ReactNode;
   status?: StatusChipStatus;
   tone?: StatusChipTone;
 };
@@ -57,7 +58,7 @@ const toneTokens = {
   }
 } as const;
 
-export function StatusChip({ className, label, status, tone }: StatusChipProps) {
+export function StatusChip({ className, label, leadingIcon, status, tone }: StatusChipProps) {
   const resolvedTone = status ?? tone ?? "normal";
   const activeTone = toneTokens[resolvedTone];
 
@@ -73,6 +74,7 @@ export function StatusChip({ className, label, status, tone }: StatusChipProps) 
     fontFamily: typographyTokens.labelSm.fontFamily,
     fontSize: typographyTokens.labelSm.fontSize,
     fontWeight: typographyTokens.labelSm.fontWeight,
+    gap: spacingPrimitives.space2.value,
     letterSpacing: typographyTokens.labelSm.letterSpacing,
     lineHeight: String(typographyTokens.labelSm.lineHeight),
     paddingBlock: spacingPrimitives.space1.value,
@@ -80,5 +82,5 @@ export function StatusChip({ className, label, status, tone }: StatusChipProps) 
     whiteSpace: "nowrap"
   };
 
-  return <span className={className} style={style}>{label}</span>;
+  return <span className={className} style={style}>{leadingIcon ? <span aria-hidden="true" style={{ display: "inline-flex", lineHeight: "1" }}>{leadingIcon}</span> : null}{label}</span>;
 }

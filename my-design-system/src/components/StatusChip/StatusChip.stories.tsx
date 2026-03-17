@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { spacingPrimitives } from "../../tokens/primitives.js";
+import { BellIcon } from "../MotherProfile/icons.js";
 import { StatusChip } from "./StatusChip.js";
 
 const meta = {
@@ -8,10 +9,11 @@ const meta = {
   component: StatusChip,
   args: {
     label: "High Risk",
-    status: "high-risk"
+    tone: "high-risk"
   },
   argTypes: {
     label: { control: "text" },
+    leadingIcon: { control: false },
     status: {
       control: "inline-radio",
       options: ["high-risk", "normal", "active", "waiting", "inactive", "warning", "upcoming", "completed"]
@@ -31,10 +33,8 @@ type Story = StoryObj<typeof meta>;
 export const States: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space3.value }}>
-      <StatusChip {...args} label="Active" status="active" />
-      <StatusChip {...args} label="Upcoming" status="upcoming" />
-      <StatusChip {...args} label="Completed" status="completed" />
-      <StatusChip {...args} label="Waiting" status="waiting" />
+      <StatusChip {...args} label="High Risk" leadingIcon={<BellIcon />} tone="high-risk" />
+      <StatusChip {...args} label="Normal" tone="normal" />
     </div>
   )
 };
