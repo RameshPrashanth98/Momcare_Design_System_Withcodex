@@ -2,23 +2,24 @@ import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 import { StatusChip, type StatusChipTone } from "../StatusChip/StatusChip.js";
 import { Typography } from "../Typography/Typography.js";
-import { ShieldIcon, UserCircleIcon, avatarShell, surfaceCardStyle } from "../MotherProfile/icons.js";
+import { CalendarIcon, ShieldIcon, UserCircleIcon, avatarShell, surfaceCardStyle } from "../MotherProfile/icons.js";
 import { componentAliases } from "../../tokens/component-aliases.js";
 import { borderWidthPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
 import { semanticTokens } from "../../tokens/semantic.js";
 
 export type MotherSummaryCardProps = {
   avatar?: ReactNode;
+  edd?: string;
   midwife: string;
   name: string;
   nic: string;
   onClick?: ButtonHTMLAttributes<HTMLButtonElement>["onClick"];
-  riskLabel: string;
+  riskLabel?: string;
   status: StatusChipTone;
   trimester: string;
 };
 
-export function MotherSummaryCard({ avatar, midwife, name, nic, onClick, riskLabel, status, trimester }: MotherSummaryCardProps) {
+export function MotherSummaryCard({ avatar, edd, midwife, name, nic, onClick, riskLabel, status, trimester }: MotherSummaryCardProps) {
   const contentStyle: CSSProperties = {
     ...surfaceCardStyle(),
     alignItems: "start",
@@ -61,10 +62,18 @@ export function MotherSummaryCard({ avatar, midwife, name, nic, onClick, riskLab
         <StatusChip label={status === "high-risk" ? "High Risk" : status} tone={status} />
       </div>
       <div style={{ display: "grid", gap: spacingPrimitives.space2.value }}>
-        <div style={{ alignItems: "center", color: semanticTokens.text.secondary.value, display: "flex", gap: spacingPrimitives.space2.value }}>
-          <span aria-hidden="true" style={{ display: "inline-flex" }}><ShieldIcon /></span>
-          <Typography color={semanticTokens.text.secondary.value} variant="body">Risk: {riskLabel}</Typography>
-        </div>
+        {riskLabel ? (
+          <div style={{ alignItems: "center", color: semanticTokens.text.secondary.value, display: "flex", gap: spacingPrimitives.space2.value }}>
+            <span aria-hidden="true" style={{ display: "inline-flex" }}><ShieldIcon /></span>
+            <Typography color={semanticTokens.text.secondary.value} variant="body">Risk: {riskLabel}</Typography>
+          </div>
+        ) : null}
+        {edd ? (
+          <div style={{ alignItems: "center", color: semanticTokens.text.secondary.value, display: "flex", gap: spacingPrimitives.space2.value }}>
+            <span aria-hidden="true" style={{ display: "inline-flex" }}><CalendarIcon /></span>
+            <Typography color={semanticTokens.text.secondary.value} variant="body">EDD: {edd}</Typography>
+          </div>
+        ) : null}
         <div style={{ alignItems: "center", color: semanticTokens.text.secondary.value, display: "flex", gap: spacingPrimitives.space2.value }}>
           <span aria-hidden="true" style={{ display: "inline-flex" }}><UserCircleIcon /></span>
           <Typography color={semanticTokens.text.secondary.value} variant="body">Assigned Midwife: {midwife}</Typography>
