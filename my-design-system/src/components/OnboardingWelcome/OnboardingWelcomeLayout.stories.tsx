@@ -52,7 +52,7 @@ function IllustrationExample() {
 }
 
 const meta = {
-  title: "Onboarding Welcome/OnboardingWelcomeLayout",
+  title: "Onboarding/OnboardingWelcomeLayout",
   component: OnboardingWelcomeLayout,
   args: {
     brand: <BrandMark ariaLabel="Mom Care brand mark" icon={<Icon><HeartPulseIcon /></Icon>} />,
@@ -70,3 +70,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+

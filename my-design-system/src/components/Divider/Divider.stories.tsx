@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Divider } from "./Divider.js";
 
 const meta = {
-  title: "Primitives/Divider",
+  title: "Core/Divider",
   component: Divider,
   args: {
     inset: false
@@ -22,3 +22,4 @@ export const Inset: Story = {
     inset: true
   }
 };
+

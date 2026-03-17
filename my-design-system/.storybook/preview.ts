@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import type { Preview } from "@storybook/react";
 
 import "../src/storybook/tailwind.css";
@@ -19,7 +19,47 @@ const preview: Preview = {
             "Styles",
             ["Color", "Typography", "Spacing", "Elevation", "Grid", "Iconography", "Border", "Radius"]
           ],
-          "Navigation"
+          "Core",
+          ["Button", "IconButton", "SearchBar", "SectionHeader", "Switch", "Avatar", "Divider"],
+          "Navigation",
+          "Onboarding",
+          "Login",
+          "Authentication",
+          "Home Dashboard",
+          "Dashboard",
+          "Notifications",
+          "Mothers",
+          "Mother Profile",
+          "Medical History",
+          "Clinic Schedule",
+          "Clinic Session",
+          "Register Clinic Visit",
+          "Search Records",
+          "Vaccination Records",
+          "WeightHealthTracking",
+          "Lab Reports",
+          "Pregnancy Timeline",
+          "User Profile",
+          "Screens",
+          [
+            "Onboarding Welcome",
+            "Login",
+            "Home",
+            "Notifications",
+            "Mothers",
+            "Mother Profile",
+            "Medical History",
+            "Clinic Schedule",
+            "Clinic Session",
+            "Register Clinic Visit",
+            "Search Records",
+            "Vaccination Records",
+            "Weight & Health Tracking",
+            "Lab Reports",
+            "Pregnancy Timeline",
+            "User Profile",
+            "Add Clinic Session"
+          ]
         ]
       }
     },
@@ -62,5 +102,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
-

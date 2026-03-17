@@ -55,7 +55,7 @@ function IllustrationExample() {
 }
 
 const meta = {
-  title: "Onboarding Welcome/IllustrationPanel",
+  title: "Onboarding/IllustrationPanel",
   component: IllustrationPanel,
   args: {
     alt: "Maternal health dashboard illustration",
@@ -70,3 +70,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { OnboardingContent } from "./OnboardingContent.js";
 
 const meta = {
-  title: "Onboarding Welcome/OnboardingContent",
+  title: "Onboarding/OnboardingContent",
   component: OnboardingContent,
   args: {
     align: "center",
@@ -19,3 +19,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+

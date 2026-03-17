@@ -5,7 +5,7 @@ import { Icon } from "./Icon.js";
 import { BrandMark } from "./BrandMark.js";
 
 const meta = {
-  title: "Onboarding Welcome/BrandMark",
+  title: "Onboarding/BrandMark",
   component: BrandMark,
   args: {
     ariaLabel: "Mom Care brand mark",
@@ -19,3 +19,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
