@@ -1,11 +1,11 @@
-﻿import { useState, type ButtonHTMLAttributes, type CSSProperties, type ReactNode } from "react";
+import { useState, type ButtonHTMLAttributes, type CSSProperties, type ReactNode } from "react";
 
 import { componentAliases } from "../../tokens/component-aliases.js";
 import { borderWidthPrimitives, colorPrimitives, fontSizePrimitives, shadowPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
 import { semanticTokens } from "../../tokens/semantic.js";
 import { typographyTokens } from "../../tokens/typography.js";
 
-export type ButtonVariant = "filled" | "text";
+export type ButtonVariant = "filled" | "text" | "tonal";
 export type ButtonSize = "compact" | "comfortable" | "spacious";
 
 export type ButtonProps = {
@@ -78,6 +78,19 @@ const variantTokens = {
     disabledColor: semanticTokens.text.muted.value,
     hoverBackground: semanticTokens.surface.subtle.value,
     hoverShadow: "none",
+    shadow: "none"
+  },
+  tonal: {
+    activeBackground: colorPrimitives.sageMid.value,
+    activeShadow: "none",
+    borderColor: "transparent",
+    defaultBackground: colorPrimitives.sageLight.value,
+    defaultColor: colorPrimitives.sageDeep.value,
+    disabledBackground: semanticTokens.surface.muted.value,
+    disabledBorderColor: "transparent",
+    disabledColor: semanticTokens.text.muted.value,
+    hoverBackground: colorPrimitives.sageMid.value,
+    hoverShadow: shadowPrimitives.shadowXs.value,
     shadow: "none"
   }
 } as const;

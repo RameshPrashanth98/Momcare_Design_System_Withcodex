@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { spacingPrimitives } from "../../tokens/primitives.js";
 import { SectionHeader } from "./SectionHeader.js";
 
 const meta = {
-  title: "Dashboard/SectionHeader",
+  title: "Core/SectionHeader",
   component: SectionHeader,
   args: {
-    title: "Today's Clinics"
+    title: "Today"
   },
   argTypes: {
     "aria-label": { control: "text" },
@@ -21,10 +22,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const TitleOnly: Story = {};
+export const DefaultSectionHeader: Story = {};
 
-export const TitleWithAction: Story = {
-  args: {
-    actionLabel: "View all"
-  }
+export const DifferentTextLengths: Story = {
+  render: (args) => (
+    <div style={{ display: "grid", gap: spacingPrimitives.space4.value }}>
+      <SectionHeader {...args} title="Today" />
+      <SectionHeader {...args} title="Notifications" />
+      <SectionHeader {...args} title="High-Risk Alerts and Appointment Reminders" />
+    </div>
+  )
 };

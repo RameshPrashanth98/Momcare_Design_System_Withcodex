@@ -1,4 +1,4 @@
-﻿import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { fontFamilyPrimitives, fontSizePrimitives, lineHeightPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
 import { Button } from "./Button.js";
@@ -22,7 +22,7 @@ function StoryIcon({ symbol }: { symbol: string }) {
 }
 
 const meta = {
-  title: "Authentication/Button",
+  title: "Core/Button",
   component: Button,
   args: {
     children: "Login",
@@ -51,7 +51,7 @@ const meta = {
     },
     variant: {
       control: "inline-radio",
-      options: ["filled", "text"]
+      options: ["filled", "text", "tonal"]
     },
     "aria-label": { control: "text" }
   },
@@ -71,10 +71,18 @@ export const TextButton: Story = {
   }
 };
 
+export const TonalButton: Story = {
+  args: {
+    children: "Mark as Read",
+    variant: "tonal"
+  }
+};
+
 export const DisabledStates: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
       <Button {...args} disabled variant="filled">Login</Button>
+      <Button {...args} disabled variant="tonal">Mark as Read</Button>
       <Button {...args} disabled variant="text">Forgot Password</Button>
       <Button {...args} loading variant="filled">Login</Button>
     </div>
@@ -122,19 +130,12 @@ export const AllSizes: Story = {
       <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
         <Button {...args} size="compact" variant="text">Compact</Button>
         <Button {...args} size="comfortable" variant="text">Comfortable</Button>
-        <Button {...args} size="spacious" variant="text">Spacious</Button>
+        <Button {...args} size="spacious" variant="text">Comfortable</Button>
       </div>
-    </div>
-  )
-};
-
-export const AuthExamples: Story = {
-  render: (args) => (
-    <div style={{ display: "grid", gap: spacingPrimitives.space4.value, width: `calc(${spacingPrimitives.space32.value} + ${spacingPrimitives.space24.value})` }}>
-      <Button {...args} fullWidth type="submit" variant="filled">Login</Button>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space3.value, justifyContent: "space-between" }}>
-        <Button {...args} variant="text">Forgot Password</Button>
-        <Button {...args} trailingIcon={<StoryIcon symbol="+" />} variant="text">Contact Administrator</Button>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
+        <Button {...args} size="compact" variant="tonal">Compact</Button>
+        <Button {...args} size="comfortable" variant="tonal">Comfortable</Button>
+        <Button {...args} size="spacious" variant="tonal">Spacious</Button>
       </div>
     </div>
   )

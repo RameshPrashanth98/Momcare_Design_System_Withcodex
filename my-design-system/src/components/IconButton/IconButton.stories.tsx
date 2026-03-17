@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { spacingPrimitives } from "../../tokens/primitives.js";
+import { radiusPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
+import { semanticTokens } from "../../tokens/semantic.js";
 import { IconButton } from "./IconButton.js";
 
 function StoryIcon({ symbol }: { symbol: string }) {
@@ -8,7 +9,7 @@ function StoryIcon({ symbol }: { symbol: string }) {
 }
 
 const meta = {
-  title: "Dashboard/IconButton",
+  title: "Core/IconButton",
   component: IconButton,
   args: {
     "aria-label": "Notification",
@@ -40,19 +41,41 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const NotificationButton: Story = {
+export const BackButton: Story = {
   args: {
-    "aria-label": "Open notifications",
-    icon: <StoryIcon symbol="!" />,
+    "aria-label": "Go back",
+    icon: <StoryIcon symbol="<" />,
+    variant: "standard"
+  }
+};
+
+export const FilterIcon: Story = {
+  args: {
+    "aria-label": "Filter notifications",
+    icon: <StoryIcon symbol="=" />,
     variant: "tonal"
   }
 };
 
-export const ProfileButton: Story = {
+export const ProfileAvatarButton: Story = {
   args: {
     "aria-label": "Open profile menu",
-    icon: <StoryIcon symbol="P" />,
-    selected: true,
+    icon: (
+      <span
+        aria-hidden="true"
+        style={{
+          alignItems: "center",
+          backgroundColor: semanticTokens.surface.base.value,
+          borderRadius: radiusPrimitives.radiusFull.value,
+          display: "inline-flex",
+          height: spacingPrimitives.space6.value,
+          justifyContent: "center",
+          width: spacingPrimitives.space6.value
+        }}
+      >
+        RP
+      </span>
+    ),
     variant: "filled"
   }
 };
@@ -69,8 +92,9 @@ export const AllSupportedVariants: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
       <IconButton {...args} aria-label="Standard notification" icon={<StoryIcon symbol="!" />} variant="standard" />
-      <IconButton {...args} aria-label="Filled notification" icon={<StoryIcon symbol="!" />} variant="filled" />
-      <IconButton {...args} aria-label="Tonal notification" icon={<StoryIcon symbol="!" />} variant="tonal" />
+      <IconButton {...args} aria-label="Filled profile" icon={<StoryIcon symbol="P" />} variant="filled" />
+      <IconButton {...args} aria-label="Tonal filter" icon={<StoryIcon symbol="=" />} variant="tonal" />
     </div>
   )
 };
+
