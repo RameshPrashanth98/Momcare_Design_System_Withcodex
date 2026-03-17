@@ -1,0 +1,28 @@
+# Quick Task 260317-lmw: push changes to github - Plan
+
+**Date:** 2026-03-17
+**Status:** In Progress
+
+## Objective
+
+Push the current local `main` branch commits to the configured GitHub remote without including unrelated untracked workspace files.
+
+## Tasks
+
+### 1. Verify push scope
+- Files: `git status`, `git log`, `git remote -v`
+- Action: Confirm the branch, ahead/behind state, and untracked files before pushing.
+- Verify: Only committed branch changes are part of the push.
+- Done: The branch is confirmed ahead of `origin/main` and untracked files are excluded from the push.
+
+### 2. Push branch state
+- Files: Git refs only
+- Action: Push `main` to `origin`.
+- Verify: Remote accepts the push and local branch is no longer ahead.
+- Done: GitHub contains the latest local commits.
+
+### 3. Record quick-task completion
+- Files: `.planning/STATE.md`, `.planning/quick/260317-lmw-push-changes-to-github/260317-lmw-SUMMARY.md`
+- Action: Save the push outcome and update state tracking.
+- Verify: Planning artifacts reflect the completed push task.
+- Done: Summary and state include the quick-task record and resulting commit references.
