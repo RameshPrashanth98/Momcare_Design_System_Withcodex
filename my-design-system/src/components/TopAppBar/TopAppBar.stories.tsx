@@ -29,7 +29,7 @@ type Story = StoryObj<typeof meta>;
 const languageSwitcher = (
   <SegmentedButton
     aria-label="Choose language"
-    options={[{ label: "EN", value: "en" }, { label: "??", value: "si" }]}
+    options={[{ label: "EN", value: "en" }, { label: "SI", value: "si" }]}
     value="en"
   />
 );
@@ -54,3 +54,4 @@ export const WithMultipleActions: Story = {
     ]
   }
 };
+

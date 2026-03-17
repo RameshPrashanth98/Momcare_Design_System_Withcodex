@@ -5,15 +5,15 @@ import { FloatingActionButton } from "../../components/FloatingActionButton/Floa
 import { MotherCard } from "../../components/MotherCard/MotherCard.js";
 import { MothersLayout } from "../../components/MothersLayout/MothersLayout.js";
 import { NavigationBar } from "../../components/NavigationBar/NavigationBar.js";
-import { SearchBar } from "../../components/SearchBar/SearchBar.js";
+import { SearchField } from "../../components/SearchField/SearchField.js";
 import { TopAppBar } from "../../components/TopAppBar/TopAppBar.js";
 
 export function MothersScreen() {
   const topBar = (
     <TopAppBar
       actions={[
-        <IconButton aria-label="Search" icon={<span aria-hidden="true">?</span>} variant="standard" />,
-        <LanguageSwitcher aria-label="Choose language" options={[{ label: "EN", value: "en" }, { label: "??", value: "si" }]} value="en" />,
+        <IconButton aria-label="Search" icon={<span aria-hidden="true">S</span>} variant="standard" />,
+        <LanguageSwitcher aria-label="Choose language" options={[{ label: "EN", value: "en" }, { label: "SI", value: "si" }]} value="en" />,
         <IconButton aria-label="Profile" icon={<span aria-hidden="true">RP</span>} variant="filled" />
       ]}
       navigationIcon={<IconButton aria-label="Go back" icon={<span aria-hidden="true">&lt;</span>} variant="standard" />}
@@ -59,8 +59,9 @@ export function MothersScreen() {
       fab={<FloatingActionButton aria-label="Add mother" label="Add Mother" />}
       filterBar={filters}
       list={list}
-      searchBar={<SearchBar placeholder="Search by name or NIC" />}
+      searchBar={<SearchField placeholder="Search by name or NIC" />}
       topBar={topBar}
     />
   );
 }
+
