@@ -51,7 +51,7 @@ const meta = {
     },
     variant: {
       control: "inline-radio",
-      options: ["filled", "text", "tonal"]
+      options: ["filled", "outlined", "text", "tonal"]
     },
     "aria-label": { control: "text" }
   },
@@ -63,6 +63,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const FilledButton: Story = {};
+
+export const OutlinedButton: Story = {
+  args: {
+    children: "Cancel",
+    variant: "outlined"
+  }
+};
 
 export const TextButton: Story = {
   args: {
@@ -82,6 +89,7 @@ export const DisabledStates: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
       <Button {...args} disabled variant="filled">Login</Button>
+      <Button {...args} disabled variant="outlined">Cancel</Button>
       <Button {...args} disabled variant="tonal">Mark as Read</Button>
       <Button {...args} disabled variant="text">Forgot Password</Button>
       <Button {...args} loading variant="filled">Login</Button>
@@ -119,6 +127,15 @@ export const FullWidthLoginButton: Story = {
   )
 };
 
+export const ClinicSessionActions: Story = {
+  render: (args) => (
+    <div style={{ display: "grid", gap: spacingPrimitives.space3.value, gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+      <Button {...args} fullWidth variant="outlined">Cancel</Button>
+      <Button {...args} fullWidth variant="filled">Create Clinic Session</Button>
+    </div>
+  )
+};
+
 export const AllSizes: Story = {
   render: (args) => (
     <div style={{ display: "grid", gap: spacingPrimitives.space4.value }}>
@@ -126,6 +143,11 @@ export const AllSizes: Story = {
         <Button {...args} size="compact">Compact</Button>
         <Button {...args} size="comfortable">Comfortable</Button>
         <Button {...args} size="spacious">Spacious</Button>
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
+        <Button {...args} size="compact" variant="outlined">Compact</Button>
+        <Button {...args} size="comfortable" variant="outlined">Comfortable</Button>
+        <Button {...args} size="spacious" variant="outlined">Spacious</Button>
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space4.value }}>
         <Button {...args} size="compact" variant="text">Compact</Button>

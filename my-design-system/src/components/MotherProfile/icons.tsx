@@ -28,6 +28,14 @@ export function ChevronRightIcon(props: SVGProps<SVGSVGElement>) {
   return <MotherProfileIconBase {...props}><path d="M10 7L15 12L10 17" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" /></MotherProfileIconBase>;
 }
 
+export function ChevronDownIcon(props: SVGProps<SVGSVGElement>) {
+  return <MotherProfileIconBase {...props}><path d="M7 10L12 15L17 10" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" /></MotherProfileIconBase>;
+}
+
+export function ClockIcon(props: SVGProps<SVGSVGElement>) {
+  return <MotherProfileIconBase {...props}><circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5" /><path d="M12 8V12L14.5 14.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" /></MotherProfileIconBase>;
+}
+
 export function UserCircleIcon(props: SVGProps<SVGSVGElement>) {
   return <MotherProfileIconBase {...props}><circle cx="12" cy="8.5" r="3" stroke="currentColor" strokeWidth="1.5" /><path d="M6.5 18C7.6 15.8 9.5 14.5 12 14.5C14.5 14.5 16.4 15.8 17.5 18" stroke="currentColor" strokeLinecap="round" strokeWidth="1.5" /><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" /></MotherProfileIconBase>;
 }

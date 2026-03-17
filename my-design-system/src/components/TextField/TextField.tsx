@@ -1,4 +1,4 @@
-﻿import { useId, useState, type ChangeEventHandler, type CSSProperties, type FocusEventHandler, type InputHTMLAttributes, type ReactNode } from "react";
+import { useId, useState, type ChangeEventHandler, type CSSProperties, type FocusEventHandler, type InputHTMLAttributes, type ReactNode } from "react";
 
 import { componentAliases } from "../../tokens/component-aliases.js";
 import { borderWidthPrimitives, colorPrimitives, fontSizePrimitives, spacingPrimitives } from "../../tokens/primitives.js";
@@ -11,6 +11,7 @@ export type TextFieldProps = {
   className?: string;
   defaultValue?: string;
   disabled?: boolean;
+  error?: boolean;
   errorText?: ReactNode;
   id?: string;
   invalid?: boolean;
@@ -78,6 +79,7 @@ export function TextField({
   className,
   defaultValue,
   disabled = false,
+  error = false,
   errorText,
   id,
   invalid = false,
@@ -101,8 +103,8 @@ export function TextField({
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const inputId = id ?? generatedId;
-  const message = errorText ?? supportingText;
-  const isInvalid = invalid || Boolean(errorText);
+  const isInvalid = error || invalid || Boolean(errorText);
+  const message = isInvalid ? errorText ?? supportingText : supportingText;
   const describedBy = [ariaDescribedBy, message ? supportId : undefined].filter(Boolean).join(" ") || undefined;
 
   const borderColor = disabled

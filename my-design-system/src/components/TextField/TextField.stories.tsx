@@ -1,4 +1,4 @@
-﻿import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { spacingPrimitives } from "../../tokens/primitives.js";
 import { TextField } from "./TextField.js";
@@ -12,7 +12,7 @@ const meta = {
   component: TextField,
   args: {
     disabled: false,
-    invalid: false,
+    error: false,
     label: "Staff ID",
     placeholder: "Enter your staff ID",
     required: false,
@@ -24,6 +24,7 @@ const meta = {
     "aria-label": { control: "text" },
     defaultValue: { control: "text" },
     disabled: { control: "boolean" },
+    error: { control: "boolean" },
     errorText: { control: "text" },
     id: { control: "text" },
     invalid: { control: "boolean" },
@@ -67,8 +68,8 @@ export const WithTrailingIcon: Story = {
 
 export const ErrorState: Story = {
   args: {
+    error: true,
     errorText: "Staff ID is required.",
-    invalid: true,
     supportingText: undefined
   }
 };
@@ -80,22 +81,11 @@ export const DisabledState: Story = {
   }
 };
 
-export const StaffIdExample: Story = {
+export const ClinicAttendanceExample: Story = {
   args: {
-    label: "Staff ID",
-    leadingIcon: <StoryIcon symbol="@" />,
-    placeholder: "MOH-10248",
-    supportingText: "Enter the ID issued by the ministry."
-  }
-};
-
-export const PasswordShellExample: Story = {
-  args: {
-    label: "Password",
-    leadingIcon: <StoryIcon symbol="*" />,
-    placeholder: "Enter your password",
-    trailingIcon: <StoryIcon symbol="o" />,
-    type: "password"
+    label: "Expected Number of Mothers",
+    placeholder: "Enter expected attendance",
+    supportingText: "Estimate attendance from the confirmed appointment list."
   }
 };
 

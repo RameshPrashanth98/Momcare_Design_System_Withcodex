@@ -5,7 +5,7 @@ import { borderWidthPrimitives, colorPrimitives, fontSizePrimitives, shadowPrimi
 import { semanticTokens } from "../../tokens/semantic.js";
 import { typographyTokens } from "../../tokens/typography.js";
 
-export type ButtonVariant = "filled" | "text" | "tonal";
+export type ButtonVariant = "filled" | "outlined" | "text" | "tonal";
 export type ButtonSize = "compact" | "comfortable" | "spacious";
 
 export type ButtonProps = {
@@ -66,6 +66,19 @@ const variantTokens = {
     hoverBackground: componentAliases.button.primaryHover.value,
     hoverShadow: shadowPrimitives.shadowMd.value,
     shadow: shadowPrimitives.shadowSm.value
+  },
+  outlined: {
+    activeBackground: colorPrimitives.roseMist.value,
+    activeShadow: "none",
+    borderColor: semanticTokens.border.default.value,
+    defaultBackground: semanticTokens.surface.base.value,
+    defaultColor: semanticTokens.interactive.primaryHover.value,
+    disabledBackground: semanticTokens.surface.muted.value,
+    disabledBorderColor: semanticTokens.border.subtle.value,
+    disabledColor: semanticTokens.text.muted.value,
+    hoverBackground: semanticTokens.surface.subtle.value,
+    hoverShadow: "none",
+    shadow: "none"
   },
   text: {
     activeBackground: colorPrimitives.roseMist.value,
@@ -162,7 +175,7 @@ export function Button({
     borderColor: isDisabled ? activeVariant.disabledBorderColor : activeVariant.borderColor,
     borderRadius: componentAliases.button.radius.value,
     borderStyle: "solid",
-    borderWidth: variant === "filled" ? borderWidthPrimitives.border1.value : borderWidthPrimitives.border0.value,
+    borderWidth: variant === "filled" || variant === "outlined" ? borderWidthPrimitives.border1.value : borderWidthPrimitives.border0.value,
     boxShadow,
     color,
     cursor: isDisabled ? "not-allowed" : "pointer",
