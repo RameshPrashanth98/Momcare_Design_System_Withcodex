@@ -8,11 +8,13 @@ import { typographyTokens } from "../../tokens/typography.js";
 export type ListItemProps = {
   className?: string;
   disabled?: boolean;
+  leadingIcon?: ReactNode;
   leadingVisual?: ReactNode;
   onClick?: () => void;
   primaryText: ReactNode;
   secondaryText?: ReactNode;
   tertiaryText?: ReactNode;
+  trailingIcon?: ReactNode;
   trailingText?: ReactNode;
   trailingVisual?: ReactNode;
 };
@@ -20,11 +22,13 @@ export type ListItemProps = {
 export function ListItem({
   className,
   disabled = false,
+  leadingIcon,
   leadingVisual,
   onClick,
   primaryText,
   secondaryText,
   tertiaryText,
+  trailingIcon,
   trailingText,
   trailingVisual
 }: ListItemProps) {
@@ -32,6 +36,8 @@ export function ListItem({
   const [isPressed, setIsPressed] = useState(false);
   const [isFocusVisible, setIsFocusVisible] = useState(false);
   const isInteractive = Boolean(onClick) && !disabled;
+  const resolvedLeadingVisual = leadingIcon ?? leadingVisual;
+  const resolvedTrailingVisual = trailingIcon ?? trailingVisual;
 
   const containerStyle: CSSProperties = {
     alignItems: "center",
@@ -51,7 +57,7 @@ export function ListItem({
     cursor: isInteractive ? "pointer" : "default",
     display: "grid",
     gap: spacingPrimitives.space3.value,
-    gridTemplateColumns: `${leadingVisual ? "auto " : ""}minmax(0, 1fr)${trailingText || trailingVisual ? " auto" : ""}`,
+    gridTemplateColumns: `${resolvedLeadingVisual ? "auto " : ""}minmax(0, 1fr)${trailingText || resolvedTrailingVisual ? " auto" : ""}`,
     outlineColor: isFocusVisible ? componentAliases.focusRing.color.value : "transparent",
     outlineOffset: componentAliases.focusRing.offset.value,
     outlineStyle: "solid",
@@ -113,9 +119,9 @@ export function ListItem({
 
   const content = (
     <>
-      {leadingVisual ? (
+      {resolvedLeadingVisual ? (
         <span aria-hidden="true" style={leadingStyle}>
-          {leadingVisual}
+          {resolvedLeadingVisual}
         </span>
       ) : null}
       <span style={{ display: "grid", gap: spacingPrimitives.space1.value, minWidth: "0" }}>
@@ -123,10 +129,10 @@ export function ListItem({
         {secondaryText ? <span style={secondaryStyle}>{secondaryText}</span> : null}
         {tertiaryText ? <span style={tertiaryStyle}>{tertiaryText}</span> : null}
       </span>
-      {trailingText || trailingVisual ? (
+      {trailingText || resolvedTrailingVisual ? (
         <span style={{ alignItems: "end", display: "grid", gap: spacingPrimitives.space1.value, justifyItems: "end" }}>
           {trailingText ? <span style={trailingTextStyle}>{trailingText}</span> : null}
-          {trailingVisual ? <span aria-hidden="true">{trailingVisual}</span> : null}
+          {resolvedTrailingVisual ? <span aria-hidden="true">{resolvedTrailingVisual}</span> : null}
         </span>
       ) : null}
     </>
