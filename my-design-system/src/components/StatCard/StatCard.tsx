@@ -12,7 +12,20 @@ export type StatCardProps = {
   onClick?: () => void;
   selected?: boolean;
   value: ReactNode;
+  variant?: "default" | "accent" | "warning";
 };
+
+const variantBackgrounds = {
+  default: componentAliases.card.background.value,
+  accent: colorPrimitives.roseMist.value,
+  warning: colorPrimitives.sageLight.value
+} as const;
+
+const variantBorders = {
+  default: componentAliases.card.border.value,
+  accent: semanticTokens.border.emphasis.value,
+  warning: semanticTokens.feedback.warning.value
+} as const;
 
 export function StatCard({
   className,
@@ -20,7 +33,8 @@ export function StatCard({
   label,
   onClick,
   selected = false,
-  value
+  value,
+  variant = "default"
 }: StatCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
@@ -33,9 +47,9 @@ export function StatCard({
       ? colorPrimitives.creamSoft.value
       : isHovered
         ? semanticTokens.surface.subtle.value
-        : componentAliases.card.background.value;
+        : variantBackgrounds[variant];
 
-  const borderColor = selected ? semanticTokens.border.emphasis.value : componentAliases.card.border.value;
+  const borderColor = selected ? semanticTokens.border.emphasis.value : variantBorders[variant];
   const boxShadow = isPressed ? shadowPrimitives.shadowSm.value : componentAliases.card.shadow.value;
 
   const cardStyle: CSSProperties = {

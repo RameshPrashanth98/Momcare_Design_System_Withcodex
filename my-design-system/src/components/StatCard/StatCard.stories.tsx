@@ -1,26 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { spacingPrimitives } from "../../tokens/primitives.js";
+import { CalendarIcon, HeartPulseIcon, RecordsIcon, VisitIcon } from "../MotherProfile/icons.js";
 import { StatCard } from "./StatCard.js";
-
-function StoryIcon({ symbol }: { symbol: string }) {
-  return <span aria-hidden="true">{symbol}</span>;
-}
 
 const meta = {
   title: "Dashboard/StatCard",
   component: StatCard,
   args: {
-    label: "Today Clinics",
+    label: "Today's Clinics",
     selected: false,
-    value: "12"
+    value: "12",
+    variant: "default"
   },
   argTypes: {
     icon: { control: false },
     label: { control: "text" },
     onClick: { action: "clicked" },
     selected: { control: "boolean" },
-    value: { control: "text" }
+    value: { control: "text" },
+    variant: { control: "inline-radio", options: ["default", "accent", "warning"] }
   },
   tags: ["autodocs"]
 } satisfies Meta<typeof StatCard>;
@@ -31,36 +30,25 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultMetricCard: Story = {
   args: {
-    icon: <StoryIcon symbol="+" />
+    icon: <CalendarIcon />
   }
 };
 
 export const DifferentLabelsAndValues: Story = {
   render: (args) => (
     <div style={{ display: "grid", gap: spacingPrimitives.space4.value, gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
-      <StatCard {...args} label="High Risk Mothers" value="04" />
-      <StatCard {...args} label="Upcoming Appointments" value="18" />
-      <StatCard {...args} label="Available Midwives" value="09" />
-      <StatCard {...args} label="Pending Reviews" value="07" />
+      <StatCard {...args} icon={<HeartPulseIcon />} label="High Risk Mothers" value="04" variant="accent" />
+      <StatCard {...args} icon={<VisitIcon />} label="Upcoming Appointments" value="18" variant="warning" />
+      <StatCard {...args} icon={<CalendarIcon />} label="Today's Clinics" value="09" variant="default" />
+      <StatCard {...args} icon={<RecordsIcon />} label="Recent Updates" value="07" variant="default" />
     </div>
   )
 };
 
 export const InteractiveState: Story = {
   args: {
-    icon: <StoryIcon symbol=">" />,
+    icon: <CalendarIcon />,
     onClick: () => undefined,
     selected: true
   }
-};
-
-export const GridExampleWithFourCards: Story = {
-  render: (args) => (
-    <div style={{ display: "grid", gap: spacingPrimitives.space4.value, gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
-      <StatCard {...args} icon={<StoryIcon symbol="C" />} label="Clinics" value="12" />
-      <StatCard {...args} icon={<StoryIcon symbol="R" />} label="High Risk" value="04" />
-      <StatCard {...args} icon={<StoryIcon symbol="A" />} label="Appointments" value="18" />
-      <StatCard {...args} icon={<StoryIcon symbol="M" />} label="Messages" value="07" />
-    </div>
-  )
 };
