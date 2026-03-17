@@ -4,7 +4,7 @@ import { borderWidthPrimitives, colorPrimitives, radiusPrimitives, spacingPrimit
 import { semanticTokens } from "../../tokens/semantic.js";
 import { typographyTokens } from "../../tokens/typography.js";
 
-export type StatusChipTone = "high-risk" | "normal" | "active" | "waiting" | "inactive" | "warning";
+export type StatusChipTone = "high-risk" | "normal" | "active" | "waiting" | "inactive" | "warning" | "upcoming" | "completed";
 export type StatusChipStatus = StatusChipTone;
 
 export type StatusChipProps = {
@@ -44,6 +44,16 @@ const toneTokens = {
     background: colorPrimitives.creamSoft.value,
     border: semanticTokens.feedback.warning.value,
     text: semanticTokens.feedback.warning.value
+  },
+  upcoming: {
+    background: colorPrimitives.roseMist.value,
+    border: colorPrimitives.roseDeep.value,
+    text: colorPrimitives.roseDeep.value
+  },
+  completed: {
+    background: semanticTokens.surface.muted.value,
+    border: semanticTokens.border.default.value,
+    text: semanticTokens.text.secondary.value
   }
 } as const;
 

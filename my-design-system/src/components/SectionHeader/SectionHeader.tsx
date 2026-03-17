@@ -10,9 +10,11 @@ export type SectionHeaderProps = {
   actionLabel?: string;
   className?: string;
   onActionClick?: () => void;
+  onTrailingIconClick?: () => void;
   subtitle?: ReactNode;
   title: string;
   trailingAction?: ReactNode;
+  trailingIcon?: ReactNode;
 };
 
 export function SectionHeader({
@@ -20,9 +22,11 @@ export function SectionHeader({
   actionLabel,
   className,
   onActionClick,
+  onTrailingIconClick,
   subtitle,
   title,
-  trailingAction
+  trailingAction,
+  trailingIcon
 }: SectionHeaderProps) {
   const wrapperStyle: CSSProperties = {
     alignItems: subtitle ? "start" : "center",
@@ -79,7 +83,28 @@ export function SectionHeader({
     whiteSpace: "nowrap"
   };
 
-  const resolvedTrailingAction = trailingAction ?? (actionLabel && onActionClick ? (
+  const iconButtonStyle: CSSProperties = {
+    alignItems: "center",
+    appearance: "none",
+    backgroundColor: "transparent",
+    border: "none",
+    borderRadius: componentAliases.button.radius.value,
+    color: semanticTokens.text.secondary.value,
+    cursor: "pointer",
+    display: "inline-flex",
+    justifyContent: "center",
+    outlineColor: componentAliases.focusRing.color.value,
+    outlineOffset: componentAliases.focusRing.offset.value,
+    outlineStyle: "solid",
+    outlineWidth: borderWidthPrimitives.border0.value,
+    padding: spacingPrimitives.space2.value
+  };
+
+  const resolvedTrailingAction = trailingAction ?? (trailingIcon ? (
+    <button aria-label={`Open ${title} action`} onClick={onTrailingIconClick} style={iconButtonStyle} type="button">
+      <span aria-hidden="true" style={{ display: "inline-flex", lineHeight: "1" }}>{trailingIcon}</span>
+    </button>
+  ) : actionLabel && onActionClick ? (
     <button onClick={onActionClick} style={actionStyle} type="button">
       {actionLabel}
     </button>

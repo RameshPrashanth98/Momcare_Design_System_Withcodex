@@ -14,11 +14,11 @@ const meta = {
     label: { control: "text" },
     status: {
       control: "inline-radio",
-      options: ["high-risk", "normal", "active", "waiting", "inactive", "warning"]
+      options: ["high-risk", "normal", "active", "waiting", "inactive", "warning", "upcoming", "completed"]
     },
     tone: {
       control: "inline-radio",
-      options: ["high-risk", "normal", "active", "waiting", "inactive", "warning"]
+      options: ["high-risk", "normal", "active", "waiting", "inactive", "warning", "upcoming", "completed"]
     }
   },
   tags: ["autodocs"]
@@ -31,9 +31,9 @@ type Story = StoryObj<typeof meta>;
 export const States: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: spacingPrimitives.space3.value }}>
-      <StatusChip {...args} label="High Risk" status="high-risk" />
-      <StatusChip {...args} label="Normal" status="normal" />
       <StatusChip {...args} label="Active" status="active" />
+      <StatusChip {...args} label="Upcoming" status="upcoming" />
+      <StatusChip {...args} label="Completed" status="completed" />
       <StatusChip {...args} label="Waiting" status="waiting" />
     </div>
   )
