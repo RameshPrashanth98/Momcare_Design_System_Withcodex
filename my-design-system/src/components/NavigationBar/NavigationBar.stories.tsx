@@ -10,6 +10,7 @@ const meta = {
   title: "Mothers/NavigationBar",
   component: NavigationBar,
   args: {
+    activeItem: "mothers",
     ariaLabel: "Mothers navigation",
     items: [
       { label: "Home", value: "home", icon: <StoryIcon symbol="H" /> },
@@ -17,13 +18,12 @@ const meta = {
       { label: "Visits", value: "visits", icon: <StoryIcon symbol="V" /> },
       { label: "Reports", value: "reports", icon: <StoryIcon symbol="R" /> },
       { label: "More", value: "more", icon: <StoryIcon symbol="•" /> }
-    ],
-    value: "mothers"
+    ]
   },
   argTypes: {
+    activeItem: { control: "text" },
     items: { control: false },
-    onValueChange: { action: "changed" },
-    value: { control: "text" }
+    onChange: { action: "changed" }
   },
   tags: ["autodocs"]
 } satisfies Meta<typeof NavigationBar>;

@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { componentAliases } from "../../tokens/component-aliases.js";
 import { borderWidthPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
@@ -10,7 +10,9 @@ export type SectionHeaderProps = {
   actionLabel?: string;
   className?: string;
   onActionClick?: () => void;
+  subtitle?: ReactNode;
   title: string;
+  trailingAction?: ReactNode;
 };
 
 export function SectionHeader({
@@ -18,14 +20,22 @@ export function SectionHeader({
   actionLabel,
   className,
   onActionClick,
-  title
+  subtitle,
+  title,
+  trailingAction
 }: SectionHeaderProps) {
   const wrapperStyle: CSSProperties = {
-    alignItems: "center",
+    alignItems: subtitle ? "start" : "center",
     display: "flex",
     gap: spacingPrimitives.space3.value,
     justifyContent: "space-between",
     width: "100%"
+  };
+
+  const contentStyle: CSSProperties = {
+    display: "grid",
+    gap: subtitle ? spacingPrimitives.space1.value : borderWidthPrimitives.border0.value,
+    minWidth: 0
   };
 
   const titleStyle: CSSProperties = {
@@ -35,6 +45,16 @@ export function SectionHeader({
     fontWeight: typographyTokens.labelSm.fontWeight,
     letterSpacing: typographyTokens.bodyLg.letterSpacing,
     lineHeight: String(typographyTokens.bodyLg.lineHeight),
+    margin: "0"
+  };
+
+  const subtitleStyle: CSSProperties = {
+    color: semanticTokens.text.secondary.value,
+    fontFamily: typographyTokens.bodyMd.fontFamily,
+    fontSize: typographyTokens.bodyMd.fontSize,
+    fontWeight: typographyTokens.bodyMd.fontWeight,
+    letterSpacing: typographyTokens.bodyMd.letterSpacing,
+    lineHeight: String(typographyTokens.bodyMd.lineHeight),
     margin: "0"
   };
 
@@ -55,17 +75,23 @@ export function SectionHeader({
     outlineStyle: "solid",
     outlineWidth: borderWidthPrimitives.border0.value,
     paddingBlock: spacingPrimitives.space2.value,
-    paddingInline: spacingPrimitives.space3.value
+    paddingInline: spacingPrimitives.space3.value,
+    whiteSpace: "nowrap"
   };
+
+  const resolvedTrailingAction = trailingAction ?? (actionLabel && onActionClick ? (
+    <button onClick={onActionClick} style={actionStyle} type="button">
+      {actionLabel}
+    </button>
+  ) : null);
 
   return (
     <div aria-label={ariaLabel} className={className} style={wrapperStyle}>
-      <h2 style={titleStyle}>{title}</h2>
-      {actionLabel && onActionClick ? (
-        <button onClick={onActionClick} style={actionStyle} type="button">
-          {actionLabel}
-        </button>
-      ) : null}
+      <div style={contentStyle}>
+        <h2 style={titleStyle}>{title}</h2>
+        {subtitle ? <p style={subtitleStyle}>{subtitle}</p> : null}
+      </div>
+      {resolvedTrailingAction ? <div>{resolvedTrailingAction}</div> : null}
     </div>
   );
 }
