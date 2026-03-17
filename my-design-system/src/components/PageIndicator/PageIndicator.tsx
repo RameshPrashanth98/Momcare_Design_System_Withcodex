@@ -7,21 +7,27 @@ import { semanticTokens } from "../../tokens/semantic.js";
 export type PageIndicatorProps = {
   "aria-label"?: string;
   className?: string;
-  count: number;
-  currentIndex: number;
+  count?: number;
+  current?: number;
+  currentIndex?: number;
   onDotClick?: (index: number) => void;
+  total?: number;
 };
 
 export function PageIndicator({
   "aria-label": ariaLabel,
   className,
   count,
+  current,
   currentIndex,
-  onDotClick
+  onDotClick,
+  total
 }: PageIndicatorProps) {
   const generatedId = useId();
-  const clampedCount = Math.max(0, count);
-  const activeIndex = Math.min(Math.max(currentIndex, 0), Math.max(clampedCount - 1, 0));
+  const resolvedCount = total ?? count ?? 0;
+  const resolvedIndex = current ?? currentIndex ?? 0;
+  const clampedCount = Math.max(0, resolvedCount);
+  const activeIndex = Math.min(Math.max(resolvedIndex, 0), Math.max(clampedCount - 1, 0));
   const interactive = typeof onDotClick === "function";
 
   const listStyle: CSSProperties = {
@@ -65,12 +71,12 @@ export function PageIndicator({
               <button
                 aria-current={isActive ? "step" : undefined}
                 aria-label={label}
+                onBlur={(event) => {
+                  event.currentTarget.style.outlineWidth = borderWidthPrimitives.border0.value;
+                }}
                 onClick={() => onDotClick?.(index)}
                 onFocus={(event) => {
                   event.currentTarget.style.outlineWidth = componentAliases.focusRing.width.value;
-                }}
-                onBlur={(event) => {
-                  event.currentTarget.style.outlineWidth = borderWidthPrimitives.border0.value;
                 }}
                 style={baseStyle}
                 type="button"
