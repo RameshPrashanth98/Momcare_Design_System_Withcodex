@@ -1,4 +1,4 @@
-﻿import { useEffect, useId, useRef, useState, type ChangeEventHandler, type CSSProperties, type InputHTMLAttributes, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ChangeEventHandler, type CSSProperties, type InputHTMLAttributes, type ReactNode } from "react";
 
 import { componentAliases } from "../../tokens/component-aliases.js";
 import { borderWidthPrimitives, spacingPrimitives } from "../../tokens/primitives.js";
@@ -9,6 +9,7 @@ export type CheckboxProps = {
   "aria-describedby"?: string;
   "aria-label"?: string;
   checked?: boolean;
+  children?: ReactNode;
   className?: string;
   defaultChecked?: boolean;
   disabled?: boolean;
@@ -27,6 +28,7 @@ export function Checkbox({
   "aria-describedby": ariaDescribedBy,
   "aria-label": ariaLabel,
   checked,
+  children,
   className,
   defaultChecked,
   disabled = false,
@@ -45,6 +47,7 @@ export function Checkbox({
   const [isFocused, setIsFocused] = useState(false);
   const [uncontrolledChecked, setUncontrolledChecked] = useState(defaultChecked ?? false);
   const resolvedChecked = checked ?? uncontrolledChecked;
+  const resolvedLabel = children ?? label;
 
   useEffect(() => {
     if (inputRef.current) {
@@ -134,7 +137,7 @@ export function Checkbox({
         />
         <span aria-hidden="true">{indeterminate ? "-" : resolvedChecked ? "x" : ""}</span>
       </span>
-      {label ? <span>{label}</span> : null}
+      {resolvedLabel ? <span>{resolvedLabel}</span> : null}
     </label>
   );
 }
