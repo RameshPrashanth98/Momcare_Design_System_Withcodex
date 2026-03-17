@@ -6,37 +6,35 @@ import { borderWidthPrimitives, colorPrimitives, radiusPrimitives, shadowPrimiti
 import { semanticTokens } from "../../tokens/semantic.js";
 import { typographyTokens } from "../../tokens/typography.js";
 
-export type NotificationCardType = "alert" | "appointment" | "vaccine" | "system";
+export type NotificationCardType = "high-risk-alert" | "appointment-reminder" | "vaccine-reminder" | "system-alert";
 
 export type NotificationCardProps = {
-  "aria-label"?: string;
   actionLabel?: string;
   className?: string;
+  details: string;
   leadingIcon?: ReactNode;
   onActionClick?: () => void;
-  primaryText: string;
   read?: boolean;
-  secondaryText: string;
-  tertiaryText?: string;
   timestamp: string;
   title: string;
   type: NotificationCardType;
+  urgent?: boolean;
 };
 
 const typeTokens = {
-  alert: {
+  "high-risk-alert": {
     accent: semanticTokens.feedback.error.value,
     surface: colorPrimitives.roseMist.value
   },
-  appointment: {
+  "appointment-reminder": {
     accent: semanticTokens.interactive.primaryHover.value,
     surface: semanticTokens.surface.subtle.value
   },
-  vaccine: {
+  "vaccine-reminder": {
     accent: colorPrimitives.sageDeep.value,
     surface: colorPrimitives.sageLight.value
   },
-  system: {
+  "system-alert": {
     accent: semanticTokens.feedback.info.value,
     surface: semanticTokens.surface.muted.value
   }
@@ -51,25 +49,23 @@ function getActionVariant(actionLabel: string | undefined) {
 }
 
 export function NotificationCard({
-  "aria-label": ariaLabel,
   actionLabel,
   className,
+  details,
   leadingIcon,
   onActionClick,
-  primaryText,
   read = false,
-  secondaryText,
-  tertiaryText,
   timestamp,
   title,
-  type
+  type,
+  urgent = false
 }: NotificationCardProps) {
   const activeType = typeTokens[type];
   const actionVariant = getActionVariant(actionLabel);
 
   const wrapperStyle: CSSProperties = {
     backgroundColor: read ? componentAliases.card.background.value : activeType.surface,
-    borderColor: read ? componentAliases.card.border.value : activeType.accent,
+    borderColor: urgent ? activeType.accent : componentAliases.card.border.value,
     borderRadius: componentAliases.card.radius.value,
     borderStyle: "solid",
     borderWidth: borderWidthPrimitives.border1.value,
@@ -108,7 +104,7 @@ export function NotificationCard({
     margin: "0"
   };
 
-  const textStyle: CSSProperties = {
+  const detailsStyle: CSSProperties = {
     color: semanticTokens.text.secondary.value,
     fontFamily: typographyTokens.bodyMd.fontFamily,
     fontSize: typographyTokens.bodyMd.fontSize,
@@ -118,48 +114,31 @@ export function NotificationCard({
     margin: "0"
   };
 
-  const tertiaryStyle: CSSProperties = {
-    color: activeType.accent,
-    fontFamily: typographyTokens.labelSm.fontFamily,
-    fontSize: typographyTokens.labelSm.fontSize,
-    fontWeight: typographyTokens.labelSm.fontWeight,
-    letterSpacing: typographyTokens.labelSm.letterSpacing,
-    lineHeight: String(typographyTokens.labelSm.lineHeight),
-    margin: "0"
-  };
-
   const timestampStyle: CSSProperties = {
     color: semanticTokens.text.muted.value,
     fontFamily: typographyTokens.caption.fontFamily,
     fontSize: typographyTokens.caption.fontSize,
     fontWeight: typographyTokens.caption.fontWeight,
     letterSpacing: typographyTokens.caption.letterSpacing,
-    lineHeight: String(typographyTokens.caption.lineHeight)
+    lineHeight: String(typographyTokens.caption.lineHeight),
+    margin: "0"
   };
 
   return (
-    <article aria-label={ariaLabel ?? `${type} notification`} className={className} style={wrapperStyle}>
+    <article className={className} style={wrapperStyle}>
       <div style={bodyStyle}>
-        {leadingIcon ? (
-          <span aria-hidden="true" style={iconStyle}>
-            {leadingIcon}
-          </span>
-        ) : null}
+        {leadingIcon ? <span aria-hidden="true" style={iconStyle}>{leadingIcon}</span> : null}
         <div style={{ display: "grid", gap: spacingPrimitives.space2.value, minWidth: "0" }}>
           <h3 style={titleStyle}>{title}</h3>
-          <p style={textStyle}>{primaryText}</p>
-          <p style={textStyle}>{secondaryText}</p>
-          {tertiaryText ? <p style={tertiaryStyle}>{tertiaryText}</p> : null}
+          <p style={detailsStyle}>{details}</p>
+          <p style={timestampStyle}>{timestamp}</p>
         </div>
         {actionLabel && actionVariant ? (
-          <div style={{ alignSelf: "center" }}>
-            <Button aria-label={actionLabel} onClick={onActionClick} size="compact" variant={actionVariant}>
-              {actionLabel}
-            </Button>
+          <div style={{ alignSelf: "center", justifySelf: "end" }}>
+            <Button aria-label={actionLabel} onClick={onActionClick} size="compact" variant={actionVariant}>{actionLabel}</Button>
           </div>
         ) : null}
       </div>
-      <div style={timestampStyle}>{timestamp}</div>
     </article>
   );
 }

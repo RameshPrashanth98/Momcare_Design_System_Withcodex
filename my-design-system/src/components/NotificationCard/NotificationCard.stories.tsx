@@ -1,40 +1,26 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { spacingPrimitives } from "../../tokens/primitives.js";
+import { BellIcon, CalendarIcon, HeartPulseIcon, ShieldIcon } from "../MotherProfile/icons.js";
 import { NotificationCard } from "./NotificationCard.js";
-
-function StoryIcon({ symbol }: { symbol: string }) {
-  return <span aria-hidden="true">{symbol}</span>;
-}
 
 const meta = {
   title: "Notifications/NotificationCard",
   component: NotificationCard,
   args: {
-    title: "High Risk Mother Alert",
-    primaryText: "N. Fernando requires review today.",
-    secondaryText: "Blood pressure check is overdue.",
-    timestamp: "5 min ago",
     actionLabel: "View",
-    type: "alert",
+    details: "Mother requires immediate follow-up due to elevated fasting glucose recorded during morning clinic.",
     read: false,
-    leadingIcon: <StoryIcon symbol="!" />
+    timestamp: "17 Mar 2026, 9:15 AM",
+    title: "High Risk Alert",
+    type: "high-risk-alert",
+    urgent: true
   },
   argTypes: {
-    "aria-label": { control: "text" },
-    actionLabel: { control: "text" },
     leadingIcon: { control: false },
     onActionClick: { action: "clicked" },
-    primaryText: { control: "text" },
-    read: { control: "boolean" },
-    secondaryText: { control: "text" },
-    tertiaryText: { control: "text" },
-    timestamp: { control: "text" },
-    title: { control: "text" },
-    type: {
-      control: "inline-radio",
-      options: ["alert", "appointment", "vaccine", "system"]
-    }
+    type: { control: "inline-radio", options: ["high-risk-alert", "appointment-reminder", "vaccine-reminder", "system-alert"] },
+    urgent: { control: "boolean" },
+    read: { control: "boolean" }
   },
   tags: ["autodocs"]
 } satisfies Meta<typeof NotificationCard>;
@@ -43,56 +29,40 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const HighRiskAlertExample: Story = {
+export const HighRiskAlert: Story = {
   args: {
-    tertiaryText: "Immediate attention needed"
+    leadingIcon: <HeartPulseIcon />
   }
 };
 
-export const AppointmentReminderExample: Story = {
-  args: {
-    actionLabel: "View",
-    leadingIcon: <StoryIcon symbol="A" />,
-    primaryText: "Clinic visit with Dr. Perera at 2:00 PM.",
-    secondaryText: "Bring previous scan reports.",
-    timestamp: "Today, 9:10 AM",
-    title: "Appointment Reminder",
-    type: "appointment"
-  }
-};
-
-export const VaccineReminderExample: Story = {
+export const AppointmentReminder: Story = {
   args: {
     actionLabel: "Mark as Read",
-    leadingIcon: <StoryIcon symbol="V" />,
-    primaryText: "Tetanus booster is due this week.",
-    secondaryText: "Check nearest clinic stock before scheduling.",
-    timestamp: "Yesterday",
-    title: "Vaccine Reminder",
-    type: "vaccine"
+    details: "Nimali Perera has an appointment at Matara MOH Clinic later this afternoon.",
+    leadingIcon: <CalendarIcon />,
+    title: "Appointment Reminder",
+    type: "appointment-reminder",
+    urgent: false
   }
 };
 
-export const SystemAlertExample: Story = {
+export const VaccineReminder: Story = {
   args: {
-    actionLabel: "View",
-    leadingIcon: <StoryIcon symbol="i" />,
-    primaryText: "Your dashboard sync completed successfully.",
-    read: true,
-    secondaryText: "Two patient notes were updated.",
-    timestamp: "Mar 16, 2026",
-    title: "System Update",
-    type: "system"
+    details: "Second tetanus dose is due this week for Hasini Madushika.",
+    leadingIcon: <ShieldIcon />,
+    title: "Vaccine Reminder",
+    type: "vaccine-reminder",
+    urgent: false
   }
 };
 
-export const NotificationCardGallery: Story = {
-  render: (args) => (
-    <div style={{ display: "grid", gap: spacingPrimitives.space4.value }}>
-      <NotificationCard {...args} tertiaryText="Immediate attention needed" timestamp="5 min ago" title="High Risk Mother Alert" type="alert" leadingIcon={<StoryIcon symbol="!" />} />
-      <NotificationCard {...args} actionLabel="View" timestamp="Today, 9:10 AM" title="Appointment Reminder" type="appointment" leadingIcon={<StoryIcon symbol="A" />} />
-      <NotificationCard {...args} actionLabel="Mark as Read" timestamp="Yesterday" title="Vaccine Reminder" type="vaccine" leadingIcon={<StoryIcon symbol="V" />} />
-      <NotificationCard {...args} actionLabel="View" read timestamp="Mar 16, 2026" title="System Alert" type="system" leadingIcon={<StoryIcon symbol="i" />} />
-    </div>
-  )
+export const SystemAlert: Story = {
+  args: {
+    details: "Sync completed successfully for the morning clinic roster.",
+    leadingIcon: <BellIcon />,
+    read: true,
+    title: "System Alert",
+    type: "system-alert",
+    urgent: false
+  }
 };

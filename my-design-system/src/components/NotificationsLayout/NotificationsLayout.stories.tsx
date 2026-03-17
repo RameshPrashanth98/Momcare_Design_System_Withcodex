@@ -15,7 +15,7 @@ const topBar = (
   <TopAppBar
     actions={[
       <IconButton aria-label="Filter notifications" icon={<StoryIcon symbol="=" />} variant="tonal" />,
-      <SegmentedButton aria-label="Choose language" options={[{ label: "EN", value: "en" }, { label: "??", value: "si" }]} value="en" />,
+      <SegmentedButton aria-label="Choose language" options={[{ label: "EN", value: "en" }, { label: "SI", value: "si" }]} value="en" />,
       <IconButton aria-label="Open profile" icon={<StoryIcon symbol="P" />} variant="filled" />
     ]}
     navigationIcon={<IconButton aria-label="Go back" icon={<StoryIcon symbol="<" />} variant="standard" />}
@@ -39,22 +39,20 @@ const list = (
   <>
     <NotificationCard
       actionLabel="View"
+      details="N. Fernando requires review today. Blood pressure check is overdue. Immediate attention needed."
       leadingIcon={<StoryIcon symbol="!" />}
-      primaryText="N. Fernando requires review today."
-      secondaryText="Blood pressure check is overdue."
-      tertiaryText="Immediate attention needed"
       timestamp="5 min ago"
       title="High Risk Mother Alert"
-      type="alert"
+      type="high-risk-alert"
+      urgent
     />
     <NotificationCard
       actionLabel="Mark as Read"
+      details="Clinic visit with Dr. Perera at 2:00 PM. Bring previous scan reports."
       leadingIcon={<StoryIcon symbol="A" />}
-      primaryText="Clinic visit with Dr. Perera at 2:00 PM."
-      secondaryText="Bring previous scan reports."
       timestamp="Today, 9:10 AM"
       title="Appointment Reminder"
-      type="appointment"
+      type="appointment-reminder"
     />
   </>
 );
