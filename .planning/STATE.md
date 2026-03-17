@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-last_updated: "2026-03-17T22:24:14+05:30"
+last_updated: "2026-03-17T22:31:19+05:30"
 progress:
   total_phases: 6
   completed_phases: 2
@@ -122,9 +122,11 @@ Run `$gsd-plan-phase 3` to create the Core Primitives and Guardrails plan, or `$
 | 260317-uge | push changes to github | 2026-03-17 | 179f78f | [260317-uge-push-changes-to-github](./quick/260317-uge-push-changes-to-github/) |
 | 260317-uwu | Build reusable React + TypeScript + Storybook components for the Onboarding Welcome screen using Material 3 patterns and our design tokens from src/tokens/ only. No hardcoded values. | 2026-03-17 | 189cedc | [260317-uwu-build-reusable-react-typescript-storyboo](./quick/260317-uwu-build-reusable-react-typescript-storyboo/) |
 | 260317-v47 | push changes to github | 2026-03-17 | 2803247 | [260317-v47-push-changes-to-github](./quick/260317-v47-push-changes-to-github/) |
+| 260317-v8u | in Foundations --> Overview Morph Maternity mention in marked placed in the screenshot I want to change it to MomCare and put our logo | 2026-03-17 | pending | [260317-v8u-in-foundations-overview-morph-maternity-](./quick/260317-v8u-in-foundations-overview-morph-maternity-/) |
 
 ---
-*Last updated: 2026-03-17 after quick task 260317-v47*
+*Last updated: 2026-03-17 after quick task 260317-v8u*
+
 
 
 

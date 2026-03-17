@@ -17,7 +17,7 @@ import {
 import { semanticTokens } from "../tokens/semantic.js";
 import type { TokenSourceRef, TypographyStyleToken } from "../tokens/types.js";
 import { typographyTokens } from "../tokens/typography.js";
-import { MomCareBrandMark } from "./momcare-brand.js";
+import { momCareBrandImage } from "./momcare-brand.js";
 
 type TokenRow = {
   token: string;
@@ -452,13 +452,10 @@ export function OverviewPage() {
               The core visual language of MomCare: tokens, styles, and reusable patterns that define every Storybook surface and app touchpoint.
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center gap-5 rounded-[22px] bg-white/60 p-8">
-            <div className="relative h-[110px] w-[110px] rounded-full border border-brand-roseBlush">
-              <div className="absolute inset-[20px] rounded-full bg-brand-roseBlush/30" />
-              <div className="absolute inset-[35px] rounded-full bg-brand-roseBlush/50" />
-              <div className="absolute inset-[46px] rounded-full bg-brand-roseDeep/85" />
-            </div>
-            <div className="font-display text-xl font-light uppercase tracking-[0.14em] text-text-secondary">Morph Maternity</div>
+          <div className="flex flex-col items-center justify-center gap-4 rounded-[22px] bg-white/60 p-6 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]">
+            <img alt="MomCare logo" className="h-auto w-full max-w-[176px]" src={momCareBrandImage} />
+            <div className="type-labelSm text-brand-roseDeep">MomCare</div>
+            <div className="max-w-[170px] type-caption text-text-secondary">Mother-and-baby centered care, translated into the system&apos;s brand language.</div>
           </div>
         </div>
       </Card>
