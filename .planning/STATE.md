@@ -91,9 +91,11 @@ Run `$gsd-plan-phase 3` to create the Core Primitives and Guardrails plan, or `$
 | 260317-kt6 | Align the Mothers screen component set to the requested file list and naming, reusing the existing implementation where possible. | 2026-03-17 | 1c6b294 | [260317-kt6-align-the-mothers-screen-component-set-t](./quick/260317-kt6-align-the-mothers-screen-component-set-t/) |
 | 260317-kee | push changes to github | 2026-03-17 | d05eec6 | [260317-kee-push-changes-to-github](./quick/260317-kee-push-changes-to-github/) |
 | 260317-l0k | push changes to github | 2026-03-17 | a6c24a2 | [260317-l0k-push-changes-to-github](./quick/260317-l0k-push-changes-to-github/) |
+| 260317-l65 | Build reusable React + TypeScript + Storybook components for the Mother Profile screen using Material 3 patterns and our design tokens from src/tokens/ only. No hardcoded values. | 2026-03-17 | 81d9471 | [260317-l65-build-reusable-react-typescript-storyboo](./quick/260317-l65-build-reusable-react-typescript-storyboo/) |
 
 ---
-*Last updated: 2026-03-17 after quick task 260317-l0k*
+*Last updated: 2026-03-17 after quick task 260317-l65*
+
 
 
 
