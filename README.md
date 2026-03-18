@@ -1,6 +1,6 @@
 # Mom Care Design System
 
-Mom Care is a React, TypeScript, Tailwind CSS, and Storybook based design system workspace built from the Morph Maternity foundations reference. The goal of the project is to turn that source artifact into a reusable, documented, token-driven UI system that stays visually consistent, accessible, and easy to extend.
+Mom Care is a React, TypeScript, Tailwind CSS, and Storybook based design system workspace built. The goal of the project is to turn that source artifact into a reusable, documented, token-driven UI system that stays visually consistent, accessible, and easy to extend.
 
 ## Overview
 
